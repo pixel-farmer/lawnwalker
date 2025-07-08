@@ -7,6 +7,8 @@ import { usePathname } from 'next/navigation'
 
 export default function RootLayout({ children }) {
   const pathname = usePathname()
+  const isWork = pathname === '/' || pathname.startsWith('/projects')
+  const isAbout = pathname === '/about'
 
   function NavLink({ href, children }) {
     const isActive = pathname === href
@@ -36,18 +38,19 @@ export default function RootLayout({ children }) {
 
         <div className="flex min-h-screen relative z-0">
           {/* Left Sidebar */}
-          <nav
-            className="w-32 md:w-48 px-4 fixed left-0 top-1/2 transform -translate-y-1/2 flex flex-col space-y-8 bg-opacity-0"
-            aria-label="Primary Navigation"
-          >
-            <NavLink href="/">Work</NavLink>
-            <NavLink href="/about">About</NavLink>
-
-            <div className="mt-auto text-xs text-gray-600">© {new Date().getFullYear()}</div>
-          </nav>
-
+    <nav className="fixed left-8 top-1/2 -translate-y-1/2 space-y-4 font-mono text-xl text-white">
+      <div className="flex items-center gap-2">
+        {isWork && <span className="text-cyan-400">&gt;</span>}
+        <Link href="/">Work</Link>
+      </div>
+      <div className="flex items-center gap-2">
+        {isAbout && <span className="text-cyan-400">&gt;</span>}
+        <Link href="/about">About</Link>
+      </div>
+    </nav>
+{/*             <div className="mt-auto text-xs text-gray-600">© {new Date().getFullYear()}</div> */}
           {/* Main Content */}
-          <main className="ml-32 md:ml-48 flex-grow border-1">
+          <main className="ml-32 md:ml-48 flex-grow">
             <AnimatePresence mode="wait">
               <motion.div
                 key={typeof window !== 'undefined' ? window.location.pathname : 'page'}

@@ -29,7 +29,7 @@ export default function LunaPage() {
         A complete visual identity and development project for I am AVA, a virtual singer.
         This includes branding, website, and video design.
       </p>
-      <Link href="/" className="text-orange-300 hover:text-orange-200 z-10">
+      <Link href="/" className="text-cyan-500 hover:text-cyan-300 z-10">
         View Project
       </Link>
     </main>

@@ -15,7 +15,7 @@ export default function Home() {
       <li key={index} className="group text-left">
         <a
           href={project.href}
-          className="text-xl md:text-3xl font-light text-orange-300  hover:text-orange-200 transition duration-300 inline-block transform group-hover:translate-x-2"
+          className="text-xl md:text-3xl font-light text-cyan-500 hover:text-cyan-300  transition duration-300 inline-block transform group-hover:translate-x-2"
         >
           {project.title}
         </a>
