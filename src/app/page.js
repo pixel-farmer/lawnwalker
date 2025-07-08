@@ -1,21 +1,29 @@
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col justify-center items-center bg-gray-900 text-white px-6">
+    <main className="min-h-screen flex flex-col justify-center items-center bg-opacity-0 text-white px-6">
       {/* Hero Container */}
-      <section className="max-w-4xl text-center">
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-wide leading-tight mb-6">
-          Crafting digital stories<br />that resonate.
-        </h1>
-        <p className="text-lg md:text-xl text-gray-300 mb-8">
-          Designing beautiful, functional websites and experiences.
-        </p>
+      <section id="projects" className="max-w-5xl w-full mx-auto px-4">
+  <h2 className="text-3xl md:text-2xl mb-4 -mt-8 text-right font-mono">
+    SELECTED WORK
+  </h2>
+  <ul className="space-y-8">
+    {[
+      { title: "Visual Identity – Luna", href: "/projects/luna" },
+      { title: "E-Commerce Redesign", href: "/projects/shop" },
+      { title: "Portfolio System UI", href: "/projects/system-ui" },
+    ].map((project, index) => (
+      <li key={index} className="group text-right">
         <a
-          href="#projects"
-          className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition"
+          href={project.href}
+          className="text-2xl md:text-4xl font-medium text-white hover:text-indigo-400 transition duration-300 inline-block transform group-hover:translate-x-2"
         >
-          See My Work
+          {project.title}
         </a>
-      </section>
+      </li>
+    ))}
+  </ul>
+</section>
+
     </main>
   )
 }
