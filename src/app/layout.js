@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className="bg-black text-white font-sans overflow-x-hidden relative">
+      <body className="bg-black text-xl text-white font-light font-sans overflow-x-hidden relative">
         {/* Background image */}
         <div
           className="fixed inset-0 -z-10 bg-center bg-cover bg-no-repeat"
@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
           </nav>
 
           {/* Main Content */}
-          <main className="ml-32 md:ml-48 flex-grow px-6 py-12">
+          <main className="ml-32 md:ml-48 flex-grow border-1">
             <AnimatePresence mode="wait">
               <motion.div
                 key={typeof window !== 'undefined' ? window.location.pathname : 'page'}

@@ -1,21 +1,21 @@
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col justify-center items-center bg-opacity-0 text-white px-6">
+    <main className="min-h-screen flex flex-col items-center bg-opacity-0 text-white px-6 border-0">
       {/* Hero Container */}
-      <section id="projects" className="max-w-5xl w-full mx-auto px-4">
-  <h2 className="text-3xl md:text-2xl mb-4 -mt-8 text-right font-mono">
+      <section id="projects" className="max-w-xl w-full px-4" style={{ marginLeft: '500px' }}>
+  <h2 className="text-xl md:text-xl mb-4 mt-8 text-left font-mono">
     SELECTED WORK
   </h2>
-  <ul className="space-y-8">
+  <ul className="space-y-2">
     {[
-      { title: "Visual Identity – Luna", href: "/projects/luna" },
-      { title: "E-Commerce Redesign", href: "/projects/shop" },
+      { title: "I am AVA", href: "/projects/luna" },
+      { title: "Pixel Farmer", href: "/projects/pixel" },
       { title: "Portfolio System UI", href: "/projects/system-ui" },
     ].map((project, index) => (
-      <li key={index} className="group text-right">
+      <li key={index} className="group text-left">
         <a
           href={project.href}
-          className="text-2xl md:text-4xl font-medium text-white hover:text-indigo-400 transition duration-300 inline-block transform group-hover:translate-x-2"
+          className="text-xl md:text-3xl font-light text-orange-300  hover:text-orange-200 transition duration-300 inline-block transform group-hover:translate-x-2"
         >
           {project.title}
         </a>
