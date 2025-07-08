@@ -3,7 +3,7 @@ export default function Home() {
     <main className="min-h-screen flex flex-col items-center bg-opacity-0 text-white px-6 border-0">
       {/* Hero Container */}
       <section id="projects" className="max-w-xl w-full px-4" style={{ marginLeft: '500px' }}>
-  <h2 className="text-xl md:text-xl mb-4 mt-8 text-left font-mono">
+  <h2 className="text-xl md:text-xl mb-4 mt-8 text-left font-thin">
     SELECTED WORK
   </h2>
   <ul className="space-y-2">
@@ -15,7 +15,7 @@ export default function Home() {
       <li key={index} className="group text-left">
         <a
           href={project.href}
-          className="text-xl md:text-3xl font-light text-cyan-500 hover:text-cyan-300  transition duration-300 inline-block transform group-hover:translate-x-2"
+          className="text-xl md:text-3xl font-thin text-cyan-500 hover:text-cyan-300  transition duration-300 inline-block transform group-hover:translate-x-2"
         >
           {project.title}
         </a>

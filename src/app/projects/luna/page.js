@@ -25,7 +25,7 @@ export default function LunaPage() {
       {/* Text Content */}
 
 <div className="h-84" />
-      <p className="max-w-2xl text-center text-gray-300 mb-10 z-10">
+      <p className="max-w-2xl text-xl text-center text-gray-300 mb-10 z-10 font-thin">
         A complete visual identity and development project for I am AVA, a virtual singer.
         This includes branding, website, and video design.
       </p>
