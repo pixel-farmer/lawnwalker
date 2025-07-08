@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <Link
         href={href}
         className={`flex items-center space-x-2 ${
-          isActive ? 'text-white font-semibold' : 'text-white'
+          isActive ? 'text-white font-light' : 'text-white'
         }`}
       >
         <span aria-hidden="true" className={`${isActive ? 'opacity-100' : 'opacity-0'} transition`}>
