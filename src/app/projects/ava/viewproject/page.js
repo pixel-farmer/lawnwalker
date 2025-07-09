@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import PixelArrow from '../../../components/PixelArrow'
 import { motion } from 'framer-motion'
 
 export default function ViewProject() {
@@ -26,6 +27,12 @@ export default function ViewProject() {
       >
         AVA is an experimental brand rooted in fluid identity and sonic storytelling.
         This project blends visual design, generative animation, and immersive audio to explore emotion through abstraction.
+
+<Link href="https://www.youtube.com/@avaexists" className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10">
+  <span>View Live</span>
+  <PixelArrow className="w-7 h-7" />
+</Link>
+
       </motion.p>
 
       {/* Project Image */}
