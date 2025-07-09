@@ -2,12 +2,11 @@
 
 import './globals.css'
 import { AnimatePresence, motion } from 'framer-motion'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Inter } from 'next/font/google'
 import SidebarNav from './components/SidebarNav'
 
-const inter = Inter({ subsets: ['latin'], weight: ['300', '400', '700'] })
+const inter = Inter({ subsets: ['latin'], weight: ['200', '300', '400'] })
 
 export default function RootLayout({ children }) {
   const pathname = usePathname()
@@ -25,7 +24,6 @@ export default function RootLayout({ children }) {
 
         <div className="flex min-h-screen relative z-0">
           {/* Left Sidebar */}
-
 <SidebarNav />
           {/* Main Content */}
           <main className="ml-32 md:ml-48 flex-grow">

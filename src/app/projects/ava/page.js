@@ -2,8 +2,9 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import PixelArrow from '../../components/PixelArrow'
 
-export default function LunaPage() {
+export default function AvaLanding() {
   return (
     <main className="relative min-h-screen flex flex-col justify-center items-center px-6">
       {/* Animated Image */}
@@ -24,14 +25,14 @@ export default function LunaPage() {
 
       {/* Text Content */}
 
-<div className="h-84" />
-      <p className="max-w-2xl text-xl text-center text-gray-300 mb-10 z-10 font-thin">
-        A complete visual identity and development project for I am AVA, a virtual singer.
-        This includes branding, website, and video design.
-      </p>
-      <Link href="/" className="text-cyan-500 hover:text-cyan-300 z-10">
-        View Project
-      </Link>
+<div className="h-64" />
+
+<Link href="/projects/ava/viewproject" className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10">
+  <span>View Project</span>
+  <PixelArrow className="w-7 h-7" />
+</Link>
+
+
     </main>
   )
 }
