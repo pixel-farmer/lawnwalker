@@ -9,11 +9,11 @@ function Cube() {
 
     const textures = useLoader(TextureLoader, [
     '/textures/avaface1.png',
-    '/textures/avaface2.png',
-    '/textures/avaface3.png',
-    '/textures/avaface4.png',
-    '/textures/avaface5.png',
-    '/textures/avaface6.png',
+    '/textures/avaface1.png',
+    '/textures/avaface1.png',
+    '/textures/avaface1.png',
+    '/textures/avaface1.png',
+    '/textures/avaface1.png',
   ])
 
   useFrame(() => {
