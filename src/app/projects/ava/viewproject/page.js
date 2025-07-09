@@ -24,9 +24,12 @@ export default function ViewProject() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
         className="max-w-2xl text-slate-300 text-lg font-thin leading-relaxed"
-      >
-        AVA is an experimental brand rooted in fluid identity and sonic storytelling.
-        This project blends visual design, generative animation, and immersive audio to explore emotion through abstraction.
+      ><b>AI Music Creator | Machinima Director | Motion Design</b>
+        <p>Meet AVA — a virtual artist.
+        Through machinima built in Second Life, AVA crafts cinematic journeys using original lyrics, AI-generated music and vocals, 
+        and immersive 3D environments. Each piece is a collaboration between human creativity and emerging technology — a glimpse 
+        into the future of performance and storytelling.</p>
+        
 
 <Link href="https://www.youtube.com/@avaexists" className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10">
   <span>View Live</span>
