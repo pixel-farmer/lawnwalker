@@ -1,45 +1,46 @@
 'use client'
 
-import { Canvas, useFrame, useLoader } from '@react-three/fiber'
+import React, { useRef } from 'react'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three'
-import { useRef } from 'react'
+import { MeshReflectorMaterial } from '@react-three/drei'
 
-function Cube() {
-  const mesh = useRef()
+export default function TexturedCube() {
+  const cubeRef = useRef()
+  const texture = useLoader(TextureLoader, '/textures/avaface1.png')
 
-    const textures = useLoader(TextureLoader, [
-    '/textures/avaface1.png',
-    '/textures/avaface1.png',
-    '/textures/avaface1.png',
-    '/textures/avaface1.png',
-    '/textures/avaface1.png',
-    '/textures/avaface1.png',
-  ])
-
+  // Animate cube rotation
   useFrame(() => {
-    if (mesh.current) {
-      mesh.current.rotation.y += 0.01
-      mesh.current.rotation.x += 0.005
+    if (cubeRef.current) {
+      cubeRef.current.rotation.y += 0.005
+      cubeRef.current.rotation.x += 0.002
     }
   })
 
   return (
-    <mesh ref={mesh}>
-      <boxGeometry args={[3, 3, 3]} />
-      {/** One material per face in the correct order */}
-      {textures.map((tex, i) => (
-        <meshStandardMaterial key={i} attach={`material-${i}`} map={tex} />
-      ))}
-    </mesh>
-  )
-}
+    <>
+      {/* 🎲 Cube */}
+      <mesh ref={cubeRef} position={[0, 1.7, 0]}>
+        <boxGeometry args={[2, 2, 2]} />
+        <meshStandardMaterial map={texture} />
+      </mesh>
 
-export default function TexturedCube() {
-  return (
-    <Canvas style={{ width: 600, height: 600 }}>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[2, 2, 5]} />
-      <Cube />
-    </Canvas>
+      {/* 🔁 Reflective Plane below the cube */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+        <planeGeometry args={[10, 10]} />
+        <MeshReflectorMaterial
+          blur={[300, 100]}
+          resolution={1024}
+          mixBlur={1}
+          mixStrength={40}
+          roughness={1}
+          depthScale={1.2}
+          minDepthThreshold={0.4}
+          maxDepthThreshold={1.4}
+          color="#333"
+          metalness={0.5}
+        />
+      </mesh>
+    </>
   )
 }
