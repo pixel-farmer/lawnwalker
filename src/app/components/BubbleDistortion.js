@@ -31,7 +31,7 @@ export default function BubbleDistortion() {
 
   return (
     <mesh ref={mesh}>
-      <planeGeometry args={[6, 6, 64, 64]} /> // Smaller plane
+      <planeGeometry args={[6, 6, 64, 64]} /> 
       <shaderMaterial
         transparent
         uniforms={uniforms}
