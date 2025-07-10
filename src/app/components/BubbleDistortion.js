@@ -35,7 +35,7 @@ export default function BubbleDistortion() {
       <shaderMaterial
         transparent
         uniforms={uniforms}
-        vertexShader={/* glsl */`
+        vertexShader={`
          uniform vec2 uMouse;
           uniform float uTime;
           varying vec2 vUv;
@@ -53,7 +53,7 @@ export default function BubbleDistortion() {
           gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
           }
         `}
-        fragmentShader={/* glsl */`
+        fragmentShader={`
 uniform sampler2D uTexture;
 varying vec2 vUv;
 varying vec3 vNormal;
