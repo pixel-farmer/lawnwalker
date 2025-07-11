@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function AvaLanding() {
   return (
-    <main className="flex flex-col items-center min-h-screen relative">
+    <main className="flex flex-col items-center min-h-screen mt-10 mr-20">
 
 
     <Link href="/projects/ava/viewproject" passHref>

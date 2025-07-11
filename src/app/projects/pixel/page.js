@@ -7,7 +7,7 @@ import PixelArrow from '../../components/PixelArrow'
 
 export default function PixelLanding() {
   return (
-    <main className="flex flex-col items-center min-h-screen relative">
+    <main className="flex flex-col items-center min-h-screen mt-10 mr-20">
 
 <Link href="/projects/pixel/viewproject" passHref>
       <button
