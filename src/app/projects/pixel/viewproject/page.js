@@ -26,7 +26,7 @@ export default function ViewProject() {
         className="max-w-2xl text-slate-300 text-lg font-thin leading-relaxed"
       >
         <b>Voxel 3D Modeling | Animation | NFT</b>
-        <p>Pixel Farmer - An NFT Gallery. A series of one-off NFTs hosting on the boutique NFT marketplace, Foundation.</p>
+        <p>Pixel Farmer is my personal NFT collection, created using MagicaVoxel and Blender. Each piece is a one-of-one digital sculpture, minted on the Ethereum blockchain via the boutique NFT marketplace, Foundation. As both artist and community member, I actively built visibility and secured sales through ongoing engagement on Twitter (now X), connecting directly with fellow artists and collectors in the NFT space.</p>
         
         
 
