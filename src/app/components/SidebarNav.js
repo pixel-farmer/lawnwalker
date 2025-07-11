@@ -31,7 +31,7 @@ const [playClick] = useSound('../../sounds/chime2.mp3')
         <span className="w-4 text-cyan-400 transition-opacity duration-300">
         {isWork && <PixelArrow className="w-7 h-7" />}
         </span>
-        <Link href="/home" onClick={playClick} className="block">Work</Link>
+        <Link href="/projects/ava" onClick={playClick} className="block">Work</Link>
       </div>
       <div className="flex items-center gap-2">
         <span className="w-4 text-cyan-400 transition-opacity duration-300">
