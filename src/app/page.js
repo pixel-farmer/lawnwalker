@@ -19,16 +19,17 @@ export default function LandingPage() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white space-y-6">
+    <main className="flex flex-col w-3/4 items-center min-h-screen relative">
       <button
         onClick={enterWithSound}
         className="group hover:scale-105 transition-transform duration-300"
         style={{ cursor: 'pointer' }}
       >
-        <Canvas style={{ width: 600, height: 600 }}>
+        <Canvas style={{ width: 700, height: 700, background: 'transparent' }} gl={{ alpha: true }}>
+          
         <ambientLight intensity={0.5} />
         <directionalLight position={[2, 2, 5]} />
-        <BubbleDistortion imageSrc="/textures/enter.jpg"/>
+        <BubbleDistortion imageSrc="/textures/enter.png"/>
       </Canvas>
       </button>
       <button

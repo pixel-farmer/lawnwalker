@@ -52,9 +52,9 @@ export default function BubbleDistortion({ imageSrc = '/textures/enter.png' }) {
           varying vec3 vNormal;
 
           void main() {
-            vec4 tex = texture2D(uTexture, vUv);
+/*             vec4 tex = texture2D(uTexture, vUv);
 
-            float radius = 0.5;
+            float radius = 0.48;
             float dist = distance(vUv, vec2(0.5, 0.5));
             float circleMask = smoothstep(radius + 0.01, radius, dist);
             
@@ -64,7 +64,27 @@ export default function BubbleDistortion({ imageSrc = '/textures/enter.png' }) {
 
             vec3 finalColor = tex.rgb + fresnel * glowColor * 0.2;
 
-            gl_FragColor = vec4(finalColor, circleMask);
+            gl_FragColor = vec4(finalColor, circleMask); */
+
+
+
+
+
+            vec4 tex = texture2D(uTexture, vUv);
+
+            float radius = 0.48;
+            float dist = distance(vUv, vec2(0.5, 0.5));
+            float edgeFade = smoothstep(radius, radius + 0.01, dist); // soften outer edge
+
+            float alpha = tex.a * (1.0 - edgeFade); // use texture alpha and fade edges
+
+            float centerDist = distance(vUv, vec2(0.5, 0.5));
+            float fresnel = smoothstep(0.4, 0.5, centerDist);
+            vec3 glowColor = vec3(0.4, 0.8, 1.0);
+
+            vec3 finalColor = tex.rgb + fresnel * glowColor * 0.2;
+
+            gl_FragColor = vec4(finalColor, alpha);
           }
         `}
       />

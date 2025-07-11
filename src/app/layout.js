@@ -24,7 +24,7 @@ const showProjectNav = pathname && (pathname.startsWith('/projects') || pathname
         {/* 🖼 Background Image */}
         <div
           className="fixed inset-0 -z-10 bg-center bg-cover bg-no-repeat"
-          style={{ backgroundImage: "url('/main-bg.jpg')" }}
+          style={{ backgroundImage: "url('/city-bg.jpg')" }}
         />
 
         <div className="flex min-h-screen relative z-0">
