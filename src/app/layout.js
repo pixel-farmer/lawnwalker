@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body style={{ backgroundColor: '#456' }} className={`${inter.className} antialiased text-white`}>
+      <body style={{ backgroundColor: '#367' }} className={`${inter.className} antialiased text-white`}>
         <SoundProvider>
           {showMusicPlayer && <MusicPlayer />}
 

@@ -19,7 +19,7 @@ export default function TexturedCube() {
       <mesh ref={cubeRef} position={[0, 2, 0]} castShadow>
         <boxGeometry args={[2, 2, 2]} />
         <meshPhysicalMaterial
-          color="#88ccff"
+          color="#66ddff"
           metalness={0.7}
           roughness={0.4}
           clearcoat={1}
