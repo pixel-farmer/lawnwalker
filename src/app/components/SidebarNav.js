@@ -14,7 +14,14 @@ export default function SidebarNav() {
 const [playClick] = useSound('../../sounds/chime2.mp3')
 
   return (
+    <>
+    {/* Title at top of page */}
+    <div className="fixed left-8 top-20 text-xl md:text-xl text-left font-thin text-white z-50">
+      Lawn Walker
+    </div>
+
     <nav className="fixed left-8 top-1/2 -translate-y-1/2 space-y-4 font-mono text-xl text-white">
+
       {!isLanding && (
         <>
       <div className="flex items-center gap-2">
@@ -32,5 +39,6 @@ const [playClick] = useSound('../../sounds/chime2.mp3')
       </>
       )}
     </nav>
+    </>
   )
 }

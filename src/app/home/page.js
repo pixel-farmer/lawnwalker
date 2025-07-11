@@ -1,91 +1,31 @@
 'use client'
 
-import useSound from 'use-sound'
+import { Canvas } from '@react-three/fiber'
+import BubbleDistortion from '../components/BubbleDistortion'
+import Link from 'next/link'
+import PixelArrow from '../components/PixelArrow'
 
-export default function Home() {
-  const [playHover] = useSound('/sounds/swipe.mp3')
-
+export default function AvaLanding() {
   return (
-    <main className="min-h-screen flex flex-col items-center bg-opacity-0 text-white px-6 border-0">
-      <section id="projects" className="max-w-xl w-full px-4" style={{ marginLeft: '600px' }}>
-        <h2 className="text-xl md:text-xl mb-4 mt-8 text-left font-thin">
-          SELECTED WORK
-        </h2>
-        <ul className="space-y-2">
-          {[
-            { title: "I am AVA", href: "/projects/ava" },
-            { title: "Pixel Farmer", href: "/projects/pixel" },
-            { title: "Portfolio System UI", href: "/projects/system-ui" },
-          ].map((project, index) => (
-            <li key={index} className="group text-left">
-              <a
-                href={project.href}
-                onMouseEnter={() => playHover()}
-                className="text-xl md:text-3xl font-thin text-cyan-500 hover:text-cyan-300 transition duration-300 inline-block transform group-hover:translate-x-2"
-              >
-                {project.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
+    <main className="flex flex-col items-center min-h-screen relative">
+
+<Canvas style={{ width: 700, height: 700 }}>
+  <ambientLight intensity={0.5} />
+  <directionalLight position={[2, 2, 5]} />
+  <BubbleDistortion imageSrc="/textures/avaface1.png"/>
+</Canvas>
+
+      <p className="mt-10 max-w-2xl text-xl text-center text-gray-300 font-thin z-10">
+        I am AVA, a virtual artist.
+      </p>
+
+      <div className="h-2" />
+
+      <Link href="/projects/ava/viewproject" className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10">
+        <span>View Project</span>
+        <PixelArrow className="w-7 h-7" />
+      </Link>
+
     </main>
   )
 }
-
-
-/* 'use client'
-
-import useSound from 'use-sound'
-import { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
-
-export default function Home() {
-  const pathname = usePathname()
-  const [hoverReady, setHoverReady] = useState(false)
-
-  // Main hover sound
-  const [playHover] = useSound('/sounds/swipe.mp3')
-
-  // Silent file just for priming
-  const [playSilent] = useSound('/sounds/onesecondsilence.mp3')
-
-  useEffect(() => {
-    const primeAudio = () => {
-      playSilent()
-      setHoverReady(true)
-    }
-
-    window.addEventListener('pointerdown', primeAudio, { once: true })
-
-    return () => window.removeEventListener('pointerdown', primeAudio)
-  }, [pathname, playSilent])
-
-  return (
-    <main className="min-h-screen flex flex-col items-center text-white px-6">
-      <section id="projects" className="max-w-xl w-full px-4" style={{ marginLeft: '600px' }}>
-        <h2 className="text-xl md:text-xl mb-4 mt-8 text-left font-thin">SELECTED WORK</h2>
-        <ul className="space-y-2">
-          {[
-            { title: "I am AVA", href: "/projects/ava" },
-            { title: "Pixel Farmer", href: "/projects/pixel" },
-            { title: "Portfolio System UI", href: "/projects/system-ui" },
-          ].map((project, index) => (
-            <li key={index} className="group text-left">
-              <a
-                href={project.href}
-                onMouseEnter={() => {
-                  if (hoverReady) playHover()
-                }}
-                className="text-xl md:text-3xl font-thin text-cyan-500 hover:text-cyan-300 transition duration-300 inline-block transform group-hover:translate-x-2"
-              >
-                {project.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </main>
-  )
-}
- */
