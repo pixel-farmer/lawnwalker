@@ -2,12 +2,16 @@
 
 import useSound from 'use-sound'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
+import { useSoundPreference } from '../context/SoundContext' // ✅ step 1
 
 export default function ProjectNav() {
   const pathname = usePathname()
-  const [playHover] = useSound('/sounds/swipe.mp3')
+  const { soundEnabled } = useSoundPreference() // ✅ step 2
+
+  const [playHover] = useSound('/sounds/swipe.mp3', {
+    soundEnabled, // ✅ step 3
+  })
 
   return (
     <main className="min-h-screen flex flex-col items-center bg-opacity-0 px-6">
@@ -16,7 +20,7 @@ export default function ProjectNav() {
           SELECTED WORK
         </h2>
         <ul className="space-y-2">
-          {[
+          {[ 
             { title: 'I am AVA', href: '/projects/ava' },
             { title: 'Pixel Farmer', href: '/projects/pixel' },
             { title: 'nothing yet', href: '/projects/ava' },

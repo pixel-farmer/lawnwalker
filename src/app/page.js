@@ -10,8 +10,8 @@ export default function LandingPage() {
   const [playSilent] = useSound('/sounds/onesecondsilence.mp3')
 
   const enterWithSound = () => {
-    playSilent() // primes audio permissions
-    router.push('/projects/ava') // or just '/' if your main content lives there
+    playSilent() // 🔊 primes audio permissions
+    router.push('/projects/ava')
   }
 
   const enterWithoutSound = () => {
@@ -19,25 +19,32 @@ export default function LandingPage() {
   }
 
   return (
-    <main className="flex flex-col w-3/4 items-center min-h-screen relative">
+    <main className="flex flex-col items-center justify-center min-h-screen gap-6 mr-60">
+      {/* 🔘 Enter with Sound (Bubble) */}
       <button
         onClick={enterWithSound}
         className="group hover:scale-105 transition-transform duration-300"
+        aria-label="Enter with sound"
         style={{ cursor: 'pointer' }}
       >
-        <Canvas style={{ width: 700, height: 700, background: 'transparent' }} gl={{ alpha: true }}>
-          
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[2, 2, 5]} />
-        <BubbleDistortion imageSrc="/textures/enter.png"/>
-      </Canvas>
+        <Canvas
+          style={{ width: 700, height: 700, background: 'transparent' }}
+          gl={{ alpha: true }}
+        >
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[2, 2, 5]} />
+          <BubbleDistortion imageSrc="/textures/enter.png" />
+        </Canvas>
       </button>
-      <button
-        onClick={enterWithoutSound}
-        className="px-6 py-3 text-white"
-      >
 
-      </button>
+      {/* 🔇 Enter without Sound (text button) */}
+{/*       <button
+        onClick={enterWithoutSound}
+        className="text-white text-sm hover:text-cyan-400 transition duration-200"
+        
+      >
+        [ENTER WITHOUT SOUND]
+      </button> */}
     </main>
   )
 }

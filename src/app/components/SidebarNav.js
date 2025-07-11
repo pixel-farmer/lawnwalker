@@ -16,10 +16,10 @@ const [playClick] = useSound('../../sounds/chime2.mp3')
   return (
     <>
     {/* Title at top of page */}
-    <div className="fixed left-8 top-20 text-xl md:text-xl text-left font-thin text-white z-50">
+    <div className="fixed left-8 top-10 text-xl md:text-xl text-left font-thin text-white z-50">
   <div>Lawn Walker</div>
-  <div className="pt-8">Visual Designer</div>
-  <div className="pt-2">Creative Developer</div>
+  <div className="pt-8 text-sm">[Visual Designer]</div>
+  <div className="pt-2 text-sm">[Creative Developer]</div>
 
     </div>
 
