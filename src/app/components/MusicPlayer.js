@@ -6,7 +6,7 @@ export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false) // start false, update in useEffect
 
   const [play, { pause }] = useSound('/music/ambient2.mp3', {
-    volume: 0.3,
+    volume: 0.2,
     loop: true,
   })
 
