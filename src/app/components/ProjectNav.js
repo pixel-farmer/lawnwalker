@@ -23,7 +23,7 @@ export default function ProjectNav() {
           {[ 
             { title: 'I am AVA', href: '/projects/ava' },
             { title: 'Pixel Farmer', href: '/projects/pixel' },
-            { title: 'nothing yet', href: '/projects/ava' },
+            { title: 'The Lab', href: '/projects/cube' },
           ].map((project, index) => (
             <li key={index} className="group text-left">
               <Link

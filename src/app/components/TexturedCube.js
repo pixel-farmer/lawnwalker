@@ -1,15 +1,11 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { useFrame, useLoader } from '@react-three/fiber'
-import { TextureLoader } from 'three'
-import { MeshReflectorMaterial } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 
 export default function TexturedCube() {
   const cubeRef = useRef()
-  const texture = useLoader(TextureLoader, '/textures/avaface1.png')
 
-  // Animate cube rotation
   useFrame(() => {
     if (cubeRef.current) {
       cubeRef.current.rotation.y += 0.005
@@ -19,27 +15,26 @@ export default function TexturedCube() {
 
   return (
     <>
-      {/* 🎲 Cube */}
-      <mesh ref={cubeRef} position={[0, 1.7, 0]}>
+      {/* 🧊 Shiny Cube */}
+      <mesh ref={cubeRef} position={[0, 2, 0]} castShadow>
         <boxGeometry args={[2, 2, 2]} />
-        <meshStandardMaterial map={texture} />
+        <meshPhysicalMaterial
+          color="#88ccff"
+          metalness={0.7}
+          roughness={0.4}
+          clearcoat={1}
+          clearcoatRoughness={0.03}
+        />
       </mesh>
 
-      {/* 🔁 Reflective Plane below the cube */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-        <planeGeometry args={[10, 10]} />
-        <MeshReflectorMaterial
-          blur={[300, 100]}
-          resolution={1024}
-          mixBlur={1}
-          mixStrength={40}
-          roughness={1}
-          depthScale={1.2}
-          minDepthThreshold={0.4}
-          maxDepthThreshold={1.4}
-          color="#333"
-          metalness={0.5}
-        />
+      {/* ⬛ Matte Floor */}
+      <mesh
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[0, -1, 0]}
+        receiveShadow
+      >
+        <planeGeometry args={[6, 6]} />
+<shadowMaterial transparent opacity={0.3} />
       </mesh>
     </>
   )

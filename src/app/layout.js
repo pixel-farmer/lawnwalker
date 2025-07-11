@@ -17,22 +17,32 @@ export default function RootLayout({ children }) {
   const showProjectNav = pathname && (pathname.startsWith('/projects') || pathname === '/home')
   const showMusicPlayer = pathname !== '/' && pathname !== '/landing'
 
+  // List of project paths where you want NO background
+  const noBackgroundPaths = [
+    '/projects/cube', // add more paths here
+  ]
+
+  // Check if current path starts with any of the no-background paths
+  const hideBackground = noBackgroundPaths.some(path => pathname.startsWith(path))
+
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased text-white`}>
+      <body style={{ backgroundColor: '#456' }} className={`${inter.className} antialiased text-white`}>
         <SoundProvider>
           {showMusicPlayer && <MusicPlayer />}
 
-          {/* 🖼 Background Image */}
-          <div
-            className="fixed inset-0 -z-10 bg-center bg-cover bg-no-repeat"
-            style={{ backgroundImage: "url('/city-bg.jpg')" }}
-          />
+          {/* Conditionally render background */}
+          {!hideBackground && (
+            <div
+              className="fixed inset-0 -z-10 bg-center bg-cover bg-no-repeat"
+              style={{ backgroundImage: "url('/city-bg.jpg')" }}
+            />
+          )}
 
           <div className="flex min-h-screen relative z-0">
             <SidebarNav />
 
-            {/* 🔁 Animated Main Content */}
+            {/* Animated Main Content */}
             <main className="ml-32 md:ml-48 flex-grow">
               <AnimatePresence mode="wait">
                 <motion.div
