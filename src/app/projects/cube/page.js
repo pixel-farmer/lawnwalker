@@ -20,7 +20,7 @@ export default function CubeLanding() {
     <ambientLight intensity={0.4} />
     <directionalLight
       position={[3, 5, 3]}
-      intensity={1.2}
+      intensity={1.3}
       castShadow
       shadow-mapSize-width={1024}
       shadow-mapSize-height={1024}

@@ -1,31 +1,6 @@
-/* 'use client'
-
-import AnimatedImage from '../components/AnimatedImage.js'
-
-export default function AboutPage() {
-  return (
-    <main className="min-h-screen flex flex-col items-center bg-opacity-0 text-white px-6">
-      <div className="max-w-xl w-full px-4">
-        <AnimatedImage
-          frameCount={5}
-          frameRate={12}
-          basePath="/textures/profile/"
-          width={300}
-          height={300}
-        />
-        <h1 className="text-white text-2xl mb-4 mt-8">About Me</h1>
-        <p className="font-thin text-gray-300 text-xl leading-relaxed">
-          USA-Based visual designer and creative developer with a focus on digital art, video and motion design, and creative development.
-          <br/><br/>
-          Always looking for interesting opportunities to create beautiful digital experiences.
-        </p>
-      </div>
-    </main>
-  )
-} */
-
 'use client'
 
+import Link from 'next/link'
 import AnimatedImage from '../components/AnimatedImage.js'
 
 export default function AboutPage() {
@@ -50,6 +25,15 @@ export default function AboutPage() {
             USA-Based visual designer and creative developer with a focus on digital art, video and motion design, and creative development.
             <br /><br />
             Always looking for interesting opportunities to create beautiful digital experiences.
+            <br></br>
+            <a
+              href="https://www.linkedin.com/in/lawn-walker-4b5ba920b/?trk=opento_sprofile_details"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10"
+            >
+              Contact Lawn
+            </a>
           </p>
         </div>
       </div>
