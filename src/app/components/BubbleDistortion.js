@@ -48,41 +48,33 @@ export default function BubbleDistortion({ imageSrc = '/textures/enter.png' }) {
         `}
         fragmentShader={`
           uniform sampler2D uTexture;
+          uniform float uTime;
           varying vec2 vUv;
           varying vec3 vNormal;
 
           void main() {
-/*             vec4 tex = texture2D(uTexture, vUv);
-
-            float radius = 0.48;
-            float dist = distance(vUv, vec2(0.5, 0.5));
-            float circleMask = smoothstep(radius + 0.01, radius, dist);
-            
-            float centerDist = distance(vUv, vec2(0.5, 0.5));
-            float fresnel = smoothstep(0.4, 0.5, centerDist);
-            vec3 glowColor = vec3(0.4, 0.8, 1.0);
-
-            vec3 finalColor = tex.rgb + fresnel * glowColor * 0.2;
-
-            gl_FragColor = vec4(finalColor, circleMask); */
-
-
-
-
-
             vec4 tex = texture2D(uTexture, vUv);
 
+            // Create circular mask
             float radius = 0.48;
             float dist = distance(vUv, vec2(0.5, 0.5));
-            float edgeFade = smoothstep(radius, radius + 0.01, dist); // soften outer edge
+            float edgeFade = smoothstep(radius, radius + 0.02, dist);
+            float alpha = tex.a * (1.0 - edgeFade);
 
-            float alpha = tex.a * (1.0 - edgeFade); // use texture alpha and fade edges
+            // Fresnel effect for edge glow
+            float edgeDist = distance(vUv, vec2(0.5, 0.5));
+            float edgeGlow = smoothstep(0.46, 0.5, edgeDist); // Sharper edge detection
+            float fresnel = pow(edgeDist, 2.5) * edgeGlow; // Softer falloff for fresnel
 
-            float centerDist = distance(vUv, vec2(0.5, 0.5));
-            float fresnel = smoothstep(0.4, 0.5, centerDist);
-            vec3 glowColor = vec3(0.4, 0.8, 1.0);
+            // Pale, pastel color shifting with slow animation
+            vec3 glowColor = vec3(
+              0.8 + 0.2 * sin(uTime * 0.3 + 0.0), // Soft pinkish tone
+              0.7 + 0.2 * sin(uTime * 0.35 + 2.0), // Pale bluish tone
+              0.85 + 0.15 * sin(uTime * 0.4 + 4.0) // Light purplish tone
+            );
 
-            vec3 finalColor = tex.rgb + fresnel * glowColor * 0.2;
+            // Combine with base texture, emphasize edge glow
+            vec3 finalColor = mix(tex.rgb, glowColor, fresnel * 0.7);
 
             gl_FragColor = vec4(finalColor, alpha);
           }
