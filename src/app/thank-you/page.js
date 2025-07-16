@@ -1,4 +1,3 @@
-// app/thank-you/page.js
 'use client'
 
 import Link from 'next/link'
@@ -9,7 +8,7 @@ export default function ThankYouPage() {
       <div className="max-w-xl text-center space-y-6">
         <h1 className="text-3xl font-semibold text-cyan-400">Thank You!</h1>
         <p className="text-lg text-gray-300">
-          Your message has been sent successfully. I'll get back to you as soon as I can.
+          Your message has been sent successfully. I&apos;ll get back to you as soon as I can.
         </p>
         <Link
           href="/"
