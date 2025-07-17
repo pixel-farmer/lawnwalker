@@ -1,23 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import useSound from 'use-sound'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false) // start false, update in useEffect
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const [play, { pause }] = useSound('/music/ambient2.mp3', {
     volume: 0.2,
     loop: true,
   })
-
-  // Start music automatically on mount
-  useEffect(() => {
-    play()
-    setIsPlaying(true)
-  }, [play])
-
-  // Optional: You can keep the user interaction handler if you want to prime audio permissions,
-  // but since play() runs on mount, you might remove or adjust it depending on browser policies.
 
   const togglePlayback = () => {
     if (isPlaying) {
