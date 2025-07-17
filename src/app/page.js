@@ -3,25 +3,21 @@
 import { useRouter } from 'next/navigation'
 import { Canvas } from '@react-three/fiber'
 import BubbleDistortion from './components/BubbleDistortion'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Howl } from 'howler'
 
 export default function LandingPage() {
   const router = useRouter()
   const soundRef = useRef(null)
 
-  useEffect(() => {
-    // Load Howler instance only on client, after mount
-    soundRef.current = new Howl({
-      src: ['/sounds/onesecondsilence.mp3'],
-      volume: 0.5
-    })
-  }, [])
-
   const enterWithSound = () => {
-    if (soundRef.current) {
-      soundRef.current.play()
+    if (!soundRef.current) {
+      soundRef.current = new Howl({
+        src: ['/sounds/onesecondsilence.mp3'],
+        volume: 0.5
+      })
     }
+    soundRef.current.play()
     router.push('/projects/ava')
   }
 
