@@ -13,16 +13,10 @@ const inter = Inter({ subsets: ['latin'], weight: ['200', '300', '400'] })
 
 export default function RootLayout({ children }) {
   const pathname = usePathname()
-
   const showProjectNav = pathname && (pathname.startsWith('/projects') || pathname === '/home')
   const showMusicPlayer = pathname !== '/' && pathname !== '/landing'
-
-  // List of project paths where you want NO background
-  const noBackgroundPaths = [
-    '/projects/cube', // add more paths here
-  ]
-
-  // Check if current path starts with any of the no-background paths
+  const showSidebarNav = pathname !== '/' && pathname !== '/landing' // Hide SidebarNav on / and /landing
+  const noBackgroundPaths = ['/projects/cube']
   const hideBackground = noBackgroundPaths.some(path => pathname.startsWith(path))
 
   return (
@@ -30,20 +24,15 @@ export default function RootLayout({ children }) {
       <body style={{ backgroundColor: '#367' }} className={`${inter.className} antialiased text-white`}>
         <SoundProvider>
           {showMusicPlayer && <MusicPlayer />}
-
-          {/* Conditionally render background */}
           {!hideBackground && (
             <div
               className="fixed inset-0 -z-10 bg-center bg-cover bg-no-repeat"
               style={{ backgroundImage: "url('/city-bg.jpg')" }}
             />
           )}
-
           <div className="flex min-h-screen relative z-0">
-            <SidebarNav />
-
-            {/* Animated Main Content */}
-            <main className="ml-32 md:ml-48 flex-grow">
+            {showSidebarNav && <SidebarNav />}
+            <main className={showSidebarNav ? 'ml-32 md:ml-48 flex-grow' : 'flex-grow'}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={pathname}
@@ -56,7 +45,6 @@ export default function RootLayout({ children }) {
                 </motion.div>
               </AnimatePresence>
             </main>
-
             {showProjectNav && (
               <div className="shrink-0">
                 <ProjectNav />

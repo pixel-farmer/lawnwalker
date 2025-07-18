@@ -1,22 +1,35 @@
-import { useState } from 'react'
-import useSound from 'use-sound'
+'use client'
+
+import { useState, useEffect } from 'react'
+import { useSoundPreference } from '../context/SoundContext'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false)
+  const { isAudioInitialized, soundEnabled, playSound, stopSound, enableSound, disableSound } = useSoundPreference()
 
-  const [play, { pause }] = useSound('/music/ambient2.mp3', {
-    volume: 0.2,
-    loop: true,
-  })
+  useEffect(() => {
+    console.log('MusicPlayer useEffect:', { isAudioInitialized, soundEnabled, isPlaying })
+    if (isAudioInitialized && soundEnabled && !isPlaying) {
+      playSound('/music/ambient2.mp3', 0.2, true)
+      setIsPlaying(true)
+    }
+  }, [isAudioInitialized, soundEnabled, playSound])
 
   const togglePlayback = () => {
+    console.log('togglePlayback:', { isAudioInitialized, isPlaying, soundEnabled })
+    if (!isAudioInitialized) {
+      console.log('AudioContext not initialized, cannot toggle playback')
+      return
+    }
     if (isPlaying) {
-      pause()
+      stopSound()
       setIsPlaying(false)
+      disableSound()
     } else {
-      play()
+      playSound('/music/ambient2.mp3', 0.2, true)
       setIsPlaying(true)
+      enableSound()
     }
   }
 

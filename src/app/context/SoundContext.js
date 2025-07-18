@@ -10,7 +10,6 @@ export function SoundProvider({ children }) {
   const [isAudioInitialized, setIsAudioInitialized] = useState(false)
   const soundRef = useRef(null)
 
-  // Load sound preference from localStorage
   useEffect(() => {
     const stored = localStorage.getItem('soundEnabled')
     if (stored !== null) {
@@ -18,37 +17,47 @@ export function SoundProvider({ children }) {
     }
   }, [])
 
-  // Initialize AudioContext on user gesture
   const initializeAudio = async () => {
     if (!audioContextRef.current && !isAudioInitialized && soundEnabled) {
       try {
+        console.log('Initializing AudioContext')
         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)()
         if (audioContextRef.current.state === 'suspended') {
           await audioContextRef.current.resume()
+          console.log('AudioContext resumed')
         }
         setIsAudioInitialized(true)
       } catch (error) {
         console.error('Error initializing AudioContext:', error)
       }
+    } else {
+      console.log('AudioContext initialization skipped:', { isAudioInitialized, soundEnabled })
     }
   }
 
-  // Play sound if enabled and AudioContext is initialized
-  const playSound = async (src, volume = 0.5) => {
-    if (!soundEnabled) return
+  const playSound = async (src, volume = 0.5, loop = false) => {
+    if (!soundEnabled) {
+      console.log('Sound disabled, skipping playSound')
+      return
+    }
     if (!isAudioInitialized) {
-      await initializeAudio()
+      console.log('AudioContext not initialized, cannot play sound')
+      return
     }
     try {
+      console.log(`Playing sound: ${src}, volume: ${volume}, loop: ${loop}`)
       if (!soundRef.current) {
         const { Howl } = await import('howler')
         soundRef.current = new Howl({
           src: [src],
           volume,
-          autoplay: true,
+          loop,
+          autoplay: false,
         })
+        soundRef.current.play()
       } else {
         soundRef.current.src = src
+        soundRef.current.loop(loop)
         soundRef.current.play()
       }
     } catch (error) {
@@ -56,13 +65,17 @@ export function SoundProvider({ children }) {
     }
   }
 
-  // Toggle sound preference
+  const stopSound = () => {
+    if (soundRef.current) {
+      console.log('Stopping sound')
+      soundRef.current.stop()
+    }
+  }
+
   const disableSound = () => {
     setSoundEnabled(false)
     localStorage.setItem('soundEnabled', 'false')
-    if (soundRef.current) {
-      soundRef.current.stop()
-    }
+    stopSound()
   }
 
   const enableSound = () => {
@@ -70,7 +83,6 @@ export function SoundProvider({ children }) {
     localStorage.setItem('soundEnabled', 'true')
   }
 
-  // Cleanup AudioContext and Howler on unmount
   useEffect(() => {
     return () => {
       if (audioContextRef.current) {
@@ -83,7 +95,7 @@ export function SoundProvider({ children }) {
   }, [])
 
   return (
-    <SoundContext.Provider value={{ soundEnabled, enableSound, disableSound, initializeAudio, playSound, isAudioInitialized }}>
+    <SoundContext.Provider value={{ soundEnabled, enableSound, disableSound, initializeAudio, playSound, stopSound, isAudioInitialized }}>
       {children}
     </SoundContext.Provider>
   )
