@@ -4,6 +4,7 @@ import './globals.css'
 import { AnimatePresence, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { Inter } from 'next/font/google'
+import Image from 'next/image' // Added for optimized background
 import MusicPlayer from './components/MusicPlayer'
 import SidebarNav from './components/SidebarNav'
 import ProjectNav from './components/ProjectNav'
@@ -15,7 +16,7 @@ export default function RootLayout({ children }) {
   const pathname = usePathname()
   const showProjectNav = pathname && (pathname.startsWith('/projects') || pathname === '/home')
   const showMusicPlayer = pathname !== '/' && pathname !== '/landing'
-  const showSidebarNav = pathname !== '/' && pathname !== '/landing' // Hide SidebarNav on / and /landing
+  const showSidebarNav = pathname !== '/' && pathname !== '/landing'
   const noBackgroundPaths = ['/projects/cube']
   const hideBackground = noBackgroundPaths.some(path => pathname.startsWith(path))
 
@@ -25,9 +26,13 @@ export default function RootLayout({ children }) {
         <SoundProvider>
           {showMusicPlayer && <MusicPlayer />}
           {!hideBackground && (
-            <div
-              className="fixed inset-0 -z-10 bg-center bg-cover bg-no-repeat"
-              style={{ backgroundImage: "url('/city-bg.jpg')" }}
+            <Image
+              src="/city-bg.jpg"
+              alt="Background"
+              fill
+              className="fixed inset-0 -z-10 object-cover"
+              priority={pathname === '/home'}
+              quality={75}
             />
           )}
           <div className="flex min-h-screen relative z-0">
@@ -39,7 +44,7 @@ export default function RootLayout({ children }) {
                   initial={{ x: 100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: -100, opacity: 0 }}
-                  transition={{ duration: 0.7, ease: 'easeInOut' }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }} // Reduced duration
                 >
                   {children}
                 </motion.div>

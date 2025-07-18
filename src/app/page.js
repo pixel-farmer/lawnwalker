@@ -13,7 +13,7 @@ export default function LandingPage() {
 
   const handleEnter = async () => {
     try {
-      await initializeAudio() // Initialize AudioContext on user gesture
+      await initializeAudio()
       router.push('/projects/ava')
     } catch (error) {
       console.error('Error initializing audio:', error)
@@ -21,13 +21,12 @@ export default function LandingPage() {
     }
   }
 
-  // Handle WebGL context loss
   useEffect(() => {
     const canvas = canvasRef.current?.gl?.domElement
     if (canvas) {
       const handleContextLost = (event) => {
         event.preventDefault()
-        console.warn('WebGL context lost, attempting to restore...')
+        console.warn('WebGL context lost, attempting to restore...', new Error().stack)
       }
       const handleContextRestored = () => {
         console.log('WebGL context restored')
@@ -41,12 +40,12 @@ export default function LandingPage() {
     }
   }, [])
 
-  // Clean up Three.js resources on unmount
   useEffect(() => {
     return () => {
       if (canvasRef.current?.gl) {
         const gl = canvasRef.current.gl
         gl.getExtension('WEBGL_lose_context')?.loseContext()
+        console.log('WebGL context cleanup on unmount')
       }
     }
   }, [])
@@ -61,8 +60,8 @@ export default function LandingPage() {
       >
         <Canvas
           ref={canvasRef}
-          style={{ width: 700, height: 700, background: 'transparent' }}
-          gl={{ alpha: true, preserveDrawingBuffer: false }}
+          style={{ width: 500, height: 500, background: 'transparent' }} // Reduced size
+          gl={{ alpha: true, preserveDrawingBuffer: false, powerPreference: 'low-power' }} // Optimize GPU usage
         >
           <ambientLight intensity={0.5} />
           <directionalLight position={[2, 2, 5]} />

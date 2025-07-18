@@ -129,65 +129,7 @@ export default function BubbleDistortion({ imageSrc = '/textures/enter.png' }) {
       </mesh>
 
       {/* Particle Mesh */}
-     <points ref={particlesMesh}>
-  <bufferGeometry attach="geometry" {...particleGeometry} />
-  <shaderMaterial
-    transparent
-    uniforms={particleUniforms}
-    vertexShader={`
-      uniform float uTime;
-      attribute float size;
-      varying vec2 vUv;
-      varying float vAlpha;
-
-      void main() {
-        vUv = uv;
-        vec3 pos = position;
-        // Gentle floating animation with slightly increased motion
-        pos.x += sin(uTime * 0.4 + position.y * 2.0) * 0.2; // Increased from 0.0 to 0.2
-        pos.y += cos(uTime * 0.3 + position.x * 1.5) * 0.15; // Increased from 0.05 to 0.15
-        pos.z += sin(uTime * 0.5 + position.z * 2.0) * 0.1; // Increased from 0.1 to 0.1 (kept subtle)
-        vAlpha = 0.5 + 0.2 * sin(uTime + position.x + position.y); // Subtle twinkling
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-        gl_PointSize = size * 50.0; // Adjust size based on distance
-      }
-    `}
-    fragmentShader={`
-      uniform sampler2D uTexture;
-      uniform float uTime;
-      varying vec2 vUv;
-      varying float vAlpha;
-
-      void main() {
-        vec4 tex = texture2D(uTexture, gl_PointCoord);
-
-      // Create circular mask
-        float radius = 0.48;
-        float dist = distance(vUv, vec2(0.5, 0.5));
-        float edgeFade = smoothstep(radius, radius + 0.02, dist);
-        float alpha = tex.a * (1.0 - edgeFade);
-
-      // Fresnel effect for edge glow
-        float edgeDist = distance(vUv, vec2(0.5, 0.5));
-        float edgeGlow = smoothstep(0.7, 0.5, edgeDist); // Sharper edge detection
-        float fresnel = pow(edgeDist, 2.0) * edgeGlow; // Softer falloff for fresnel
-        /* float fresnel = pow(edgeDist, 2.0) * edgeGlow * 1.5; // Boosted fresnel for stronger edge */
-
-        // Soft pastel colors matching bubble
-        vec3 glowColor = vec3(
-        0.75 + 0.35 * sin(uTime * 0.3 + 0.0), // Soft pinkish tone
-        0.65 + 0.25 * sin(uTime * 0.35 + 2.0), // Pale bluish tone
-        0.8 + 0.2 * sin(uTime * 0.4 + 4.0) // Light purplish tone
-        );
-
-        // Combine with base texture, emphasize edge glow
-        vec3 finalColor = mix(tex.rgb, glowColor, fresnel * 0.85);  // Stronger glow influence
-
-        gl_FragColor = vec4(finalColor * tex.rgb, tex.a * vAlpha * 0.5); // Very subtle opacity
-      }
-    `}
-  />
-</points>
+     
     </>
   )
 }
