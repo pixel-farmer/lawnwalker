@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import AnimatedImage from '../components/AnimatedImage.js'
+import Image from 'next/image' // Add this at the top if not already there
 
 export default function AboutPage() {
   return (
@@ -9,12 +10,13 @@ export default function AboutPage() {
       <div className="max-w-5xl w-full px-4 flex flex-row items-start gap-10 mt-[80px]">
         {/* 👈 Image on the left */}
         <div className="shrink-0 w-[300px] h-[300px]">
-          <AnimatedImage
-            frameCount={5}
-            frameRate={12}
-            basePath="/textures/profile/"
+          <Image
+            src="/textures/profile/pfp.png"
+            alt="Profile picture"
             width={300}
             height={300}
+            className="object-cover rounded-xl"
+            priority
           />
         </div>
 
