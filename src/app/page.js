@@ -3,35 +3,66 @@
 import { useRouter } from 'next/navigation'
 import { Canvas } from '@react-three/fiber'
 import BubbleDistortion from './components/BubbleDistortion'
-import { useRef } from 'react'
-import { Howl } from 'howler'
+import { useRef, useEffect } from 'react'
+import { useSoundPreference } from './context/SoundContext'
 
 export default function LandingPage() {
   const router = useRouter()
-  const soundRef = useRef(null)
+  const { initializeAudio } = useSoundPreference()
+  const canvasRef = useRef()
 
-  const enterWithSound = () => {
-    if (!soundRef.current) {
-      soundRef.current = new Howl({
-        src: ['/sounds/onesecondsilence.mp3'],
-        volume: 0.5
-      })
+  const handleEnter = async () => {
+    try {
+      await initializeAudio() // Initialize AudioContext on user gesture
+      router.push('/projects/ava')
+    } catch (error) {
+      console.error('Error initializing audio:', error)
+      router.push('/projects/ava')
     }
-    soundRef.current.play()
-    router.push('/projects/ava')
   }
+
+  // Handle WebGL context loss
+  useEffect(() => {
+    const canvas = canvasRef.current?.gl?.domElement
+    if (canvas) {
+      const handleContextLost = (event) => {
+        event.preventDefault()
+        console.warn('WebGL context lost, attempting to restore...')
+      }
+      const handleContextRestored = () => {
+        console.log('WebGL context restored')
+      }
+      canvas.addEventListener('webglcontextlost', handleContextLost)
+      canvas.addEventListener('webglcontextrestored', handleContextRestored)
+      return () => {
+        canvas.removeEventListener('webglcontextlost', handleContextLost)
+        canvas.removeEventListener('webglcontextrestored', handleContextRestored)
+      }
+    }
+  }, [])
+
+  // Clean up Three.js resources on unmount
+  useEffect(() => {
+    return () => {
+      if (canvasRef.current?.gl) {
+        const gl = canvasRef.current.gl
+        gl.getExtension('WEBGL_lose_context')?.loseContext()
+      }
+    }
+  }, [])
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen gap-6 mr-60">
       <button
-        onClick={enterWithSound}
+        onClick={handleEnter}
         className="group hover:scale-105 transition-transform duration-300"
-        aria-label="Enter with sound"
+        aria-label="Enter site"
         style={{ cursor: 'pointer' }}
       >
         <Canvas
+          ref={canvasRef}
           style={{ width: 700, height: 700, background: 'transparent' }}
-          gl={{ alpha: true }}
+          gl={{ alpha: true, preserveDrawingBuffer: false }}
         >
           <ambientLight intensity={0.5} />
           <directionalLight position={[2, 2, 5]} />
