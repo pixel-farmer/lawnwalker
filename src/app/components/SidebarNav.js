@@ -7,7 +7,6 @@ import { useSoundPreference } from '../context/SoundContext'
 
 export default function SidebarNav() {
   const pathname = usePathname()
-  const isLanding = pathname === '/'
   const isWork = pathname === '/home' || pathname.startsWith('/projects')
   const isAbout = pathname === '/about'
   const { playSound, isAudioInitialized, soundEnabled } = useSoundPreference()
@@ -27,27 +26,24 @@ export default function SidebarNav() {
         <div className="pt-2 text-sm">[Creative Developer]</div>
       </div>
 
+      {/* Always-visible nav links */}
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 space-y-4 font-mono text-xl text-white">
-        {!isLanding && (
-          <>
-            <div className="flex items-center gap-2">
-              <span className="w-4 text-cyan-400 transition-opacity duration-300">
-                {isWork && <PixelArrow className="w-7 h-7" />}
-              </span>
-              <Link href="/projects/ava" onClick={handleClick} className="block">
-                Work
-              </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-4 text-cyan-400 transition-opacity duration-300">
-                {isAbout && <PixelArrow className="w-7 h-7" />}
-              </span>
-              <Link href="/about" onClick={handleClick} className="block">
-                About
-              </Link>
-            </div>
-          </>
-        )}
+        <div className="flex items-center gap-2">
+          <span className="w-4 text-cyan-400 transition-opacity duration-300">
+            {isWork && <PixelArrow className="w-7 h-7" />}
+          </span>
+          <Link href="/projects/ava" onClick={handleClick} className="block">
+            Work
+          </Link>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-4 text-cyan-400 transition-opacity duration-300">
+            {isAbout && <PixelArrow className="w-7 h-7" />}
+          </span>
+          <Link href="/about" onClick={handleClick} className="block">
+            About
+          </Link>
+        </div>
       </nav>
     </>
   )
