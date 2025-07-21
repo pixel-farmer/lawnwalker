@@ -1,53 +1,53 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSoundPreference } from '../context/SoundContext'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const { isAudioInitialized, soundEnabled, playSound, stopSound, enableSound, disableSound } = useSoundPreference()
+  const {
+    isAudioInitialized,
+    soundEnabled,
+    playMusic,
+    stopMusic,
+    enableSound,
+    disableSound,
+  } = useSoundPreference()
 
   useEffect(() => {
-    console.log('MusicPlayer useEffect:', { isAudioInitialized, soundEnabled, isPlaying })
-    if (isAudioInitialized && soundEnabled && !isPlaying) {
-      playSound('/music/ambient2.mp3', 0.2, true)
-      setIsPlaying(true)
+    if (isAudioInitialized && soundEnabled) {
+      playMusic('/music/ambient2.mp3', 0.2, true)
+    } else {
+      stopMusic()
     }
-  }, [isAudioInitialized, soundEnabled, playSound])
+  }, [isAudioInitialized, soundEnabled, playMusic, stopMusic])
 
-  const togglePlayback = () => {
-    console.log('togglePlayback:', { isAudioInitialized, isPlaying, soundEnabled })
+  const togglePlayback = async () => {
     if (!isAudioInitialized) {
-      console.log('AudioContext not initialized, cannot toggle playback')
+      await enableSound() // Initializes audio context and enables sound
       return
     }
-    if (isPlaying) {
-      stopSound()
-      setIsPlaying(false)
+    if (soundEnabled) {
       disableSound()
     } else {
-      playSound('/music/ambient2.mp3', 0.2, true)
-      setIsPlaying(true)
-      enableSound()
+      await enableSound()
     }
   }
 
   return (
     <button
       onClick={togglePlayback}
-      className="fixed bottom-20 right-20 z-50 w-10 h-10 rounded-full border border-white/60 flex items-center justify-center hover:scale-105 transition-transform duration-300 bg-black/40 backdrop-blur-md"
-      aria-label={isPlaying ? 'Pause music' : 'Play music'}
+      className="fixed bottom-20 right-20 z-50 w-10 h-10 rounded-full border border-white/60 flex items-center justify-center hover:scale-105 transition-transform duration-300 bg-black/40 backdrop-blur-md cursor-pointer"
+      aria-label={soundEnabled && isAudioInitialized ? 'Pause music' : 'Play music'}
     >
       <AnimatePresence mode="wait" initial={false}>
-        {isPlaying ? (
+        {soundEnabled && isAudioInitialized ? (
           <motion.svg
             key="bars"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             width="20"
             height="20"
-            className="flex gap-1"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

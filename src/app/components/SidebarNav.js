@@ -13,7 +13,7 @@ export default function SidebarNav() {
 
   const handleClick = () => {
     if (isAudioInitialized && soundEnabled) {
-      playSound('/sounds/chime2.mp3', 0.5, false)
+      playSound('/sounds/chime2.mp3', 0.6, false)
     }
   }
 

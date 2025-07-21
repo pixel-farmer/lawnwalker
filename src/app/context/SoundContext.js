@@ -6,9 +6,10 @@ const SoundContext = createContext()
 
 export function SoundProvider({ children }) {
   const [soundEnabled, setSoundEnabled] = useState(true)
-  const audioContextRef = useRef(null)
   const [isAudioInitialized, setIsAudioInitialized] = useState(false)
-  const soundRef = useRef(null)
+  const audioContextRef = useRef(null)
+  const soundRef = useRef(null) // For UI sounds
+  const musicRef = useRef(null) // For background music
 
   useEffect(() => {
     const stored = localStorage.getItem('soundEnabled')
@@ -18,84 +19,108 @@ export function SoundProvider({ children }) {
   }, [])
 
   const initializeAudio = async () => {
-    if (!audioContextRef.current && !isAudioInitialized && soundEnabled) {
+    if (!audioContextRef.current && !isAudioInitialized) {
       try {
-        console.log('Initializing AudioContext')
         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)()
         if (audioContextRef.current.state === 'suspended') {
           await audioContextRef.current.resume()
-          console.log('AudioContext resumed')
         }
         setIsAudioInitialized(true)
       } catch (error) {
         console.error('Error initializing AudioContext:', error)
       }
-    } else {
-      console.log('AudioContext initialization skipped:', { isAudioInitialized, soundEnabled })
     }
   }
 
   const playSound = async (src, volume = 0.5, loop = false) => {
-    if (!soundEnabled) {
-      console.log('Sound disabled, skipping playSound')
-      return
-    }
-    if (!isAudioInitialized) {
-      console.log('AudioContext not initialized, cannot play sound')
-      return
-    }
+    if (!soundEnabled || !isAudioInitialized) return
     try {
-      console.log(`Playing sound: ${src}, volume: ${volume}, loop: ${loop}`)
-      if (!soundRef.current) {
-        const { Howl } = await import('howler')
-        soundRef.current = new Howl({
-          src: [src],
-          volume,
-          loop,
-          autoplay: false,
-        })
-        soundRef.current.play()
-      } else {
-        soundRef.current.src = src
-        soundRef.current.loop(loop)
-        soundRef.current.play()
+      const { Howl } = await import('howler')
+      if (soundRef.current) {
+        soundRef.current.unload()
       }
+      soundRef.current = new Howl({
+        src: [src],
+        volume,
+        loop,
+      })
+      soundRef.current.play()
     } catch (error) {
-      console.error('Error playing sound:', error)
+      console.error('Error playing UI sound:', error)
+    }
+  }
+
+  const playMusic = async (src, volume = 0.2, loop = true) => {
+    if (!soundEnabled || !isAudioInitialized) return
+    try {
+      const { Howl } = await import('howler')
+      if (musicRef.current) {
+        musicRef.current.unload()
+      }
+      musicRef.current = new Howl({
+        src: [src],
+        volume,
+        loop,
+      })
+      musicRef.current.play()
+    } catch (error) {
+      console.error('Error playing music:', error)
     }
   }
 
   const stopSound = () => {
     if (soundRef.current) {
-      console.log('Stopping sound')
       soundRef.current.stop()
+      soundRef.current.unload()
     }
+  }
+
+  const stopMusic = () => {
+    if (musicRef.current) {
+      musicRef.current.stop()
+      musicRef.current.unload()
+    }
+  }
+
+  const enableSound = async () => {
+    if (!isAudioInitialized) {
+      await initializeAudio()
+    }
+    setSoundEnabled(true)
+    localStorage.setItem('soundEnabled', 'true')
   }
 
   const disableSound = () => {
     setSoundEnabled(false)
     localStorage.setItem('soundEnabled', 'false')
     stopSound()
-  }
-
-  const enableSound = () => {
-    setSoundEnabled(true)
-    localStorage.setItem('soundEnabled', 'true')
+    stopMusic()
   }
 
   useEffect(() => {
     return () => {
       if (audioContextRef.current) {
-        audioContextRef.current.close().catch((err) => console.error('Error closing AudioContext:', err))
+        audioContextRef.current.close().catch(console.error)
       }
-      if (soundRef.current) {
-        soundRef.current.unload()
-      }
+      stopSound()
+      stopMusic()
     }
   }, [])
 
   return (
-    <SoundContext.Provider value={{ soundEnabled, enableSound, disableSound, initializeAudio, playSound, stopSound, isAudioInitialized }}>
+    <SoundContext.Provider
+      value={{
+        soundEnabled,
+        enableSound,
+        disableSound,
+        initializeAudio,
+        playSound,
+        stopSound,
+        playMusic,
+        stopMusic,
+        isAudioInitialized,
+      }}
+    >
       {children}
     </SoundContext.Provider>
   )
