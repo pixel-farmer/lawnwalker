@@ -16,7 +16,7 @@ export default function MusicPlayer() {
 
   useEffect(() => {
     if (isAudioInitialized && soundEnabled) {
-      playMusic('/sounds/onesecondsilence.mp3', 0.2, true)
+      playMusic('/music/ambient2.mp3', 0.2, true)
     } else {
       stopMusic()
     }
