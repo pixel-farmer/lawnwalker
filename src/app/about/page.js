@@ -44,7 +44,7 @@ export default function AboutPage() {
                 type="text"
                 name="name"
                 required
-                className="w-full bg-gray-700 text-white border border-gray-600 p-2 rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full bg-gray-400 text-white border border-gray-600 p-2 rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
             </div>
 
@@ -54,7 +54,7 @@ export default function AboutPage() {
                 type="email"
                 name="email"
                 required
-                className="w-full bg-gray-700 text-white border border-gray-600 p-2 rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full bg-gray-400 text-white border border-gray-600 p-2 rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
             </div>
 
@@ -64,7 +64,7 @@ export default function AboutPage() {
                 name="message"
                 rows="4"
                 required
-                className="w-full bg-gray-700 text-white border border-gray-600 p-2 rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full bg-gray-400 text-white border border-gray-600 p-2 rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
               ></textarea>
             </div>
 
