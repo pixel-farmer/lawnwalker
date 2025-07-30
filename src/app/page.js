@@ -59,7 +59,7 @@ export default function LandingPage() {
       onClick={handleClick}
       onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
     >
-      <Canvas camera={{ position: [0, 0, 5], fov: 50 }} style={{ width: 500, height: 500 }}>
+      <Canvas camera={{ position: [0, 0, 5], fov: 50 }} style={{ width: 500, height: 500, position: 'relative' }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[3, 3, 3]} />
         <Suspense fallback={null}>

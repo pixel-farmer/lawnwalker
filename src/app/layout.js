@@ -9,6 +9,7 @@ import MusicPlayer from './components/MusicPlayer'
 import SidebarNav from './components/SidebarNav'
 import ProjectNav from './components/ProjectNav'
 import { SoundProvider } from './context/SoundContext'
+import { useCustomScroll } from './hooks/useCustomScroll' // Import the hook
 
 const inter = Inter({ subsets: ['latin'], weight: ['200', '300', '400'] })
 
@@ -20,7 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        style={{ backgroundColor: '#367', position: 'relative' }}
+        style={{ backgroundColor: '#012138', position: 'relative' }}
         className={`${inter.className} antialiased text-white`}
       >
         <SoundProvider>
@@ -32,7 +33,7 @@ export default function RootLayout({ children }) {
           {/* Background image unless hidden on specific paths */}
           {!hideBackground && (
             <Image
-              // className="fixed inset-0 -z-10 object-cover"
+              className="fixed inset-0 -z-10 object-cover"
               src="/city-bg.jpg"
               alt="Background"
               fill
