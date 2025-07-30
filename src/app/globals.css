@@ -20,12 +20,16 @@
 }
 
 html {
-  overflow-y: scroll; /* Always reserve vertical scrollbar space */
   height: 100%;
 }
 
 html, body {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;     /* allows mouse/trackpad scrolling */
   overflow-x: hidden;
+  position: relative;
+  scrollbar-width: none;  /* Firefox */
 }
 
 body {

@@ -14,7 +14,8 @@ export default function AvaLanding() {
         className="group hover:scale-105 transition-transform duration-300"
         style={{ cursor: 'pointer' }}
       >
-      <Canvas style={{ width: 700, height: 700, background: 'transparent' }} gl={{ alpha: true }}>
+      <Canvas camera={{ position: [0, 0, 7], fov: 50 }} 
+        style={{ width: 700, height: 700, background: 'transparent' }} gl={{ alpha: true }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[2, 2, 5]} />
         <BubbleDistortion imageSrc="/textures/ava-thumb.png"/>

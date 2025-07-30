@@ -32,16 +32,18 @@ export default function RootLayout({ children }) {
           {/* Background image unless hidden on specific paths */}
           {!hideBackground && (
             <Image
+              // className="fixed inset-0 -z-10 object-cover"
               src="/city-bg.jpg"
               alt="Background"
               fill
-              className="fixed inset-0 -z-10 object-cover"
+              // className="fixed top-0 left-0 w-screen h-screen -z-10 object-cover"
               priority={pathname === '/home'}
               quality={75}
+
             />
           )}
 
-          <div className="flex min-h-screen relative z-0">
+          <div className="flex min-h-screen relative z-0 ">
             <SidebarNav />
             <main className="ml-32 md:ml-48 flex-grow">
               <AnimatePresence mode="wait">
