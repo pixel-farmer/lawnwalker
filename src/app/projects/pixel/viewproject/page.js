@@ -25,8 +25,8 @@ export default function ViewProject() {
         transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
         className="max-w-2xl text-slate-300 text-lg font-thin leading-relaxed"
       >
-        <b>Voxel 3D Modeling | Animation | NFT</b>
-        <p>Pixel Farmer is my personal NFT collection, created using MagicaVoxel and Blender. Each piece is a one-of-one digital sculpture, minted on the Ethereum blockchain via the boutique NFT marketplace, Foundation. As both artist and community member, I actively built visibility and secured sales through ongoing engagement on Twitter (now X), connecting directly with fellow artists and collectors in the NFT space.</p>
+        <b>Voxel 3D Modeling | Animation | Web Design | NFTs</b>
+        <p>Pixel Farmer began as a satirical spin on hustle culture and internet microbrands, but evolved into a full creative sandbox—blending voxel art, web design, and narrative experimentation. Each 1/1 digital sculpture was modeled in MagicaVoxel, animated in Blender, and minted on Foundation. The latest iteration of Pixel Farmer lives at pixelfarmer.vercel.app, where Cubie People tend to a mysterious cube empire and commerce gets reimagined as conceptual art. I handled all design, development, animation, and marketing—including community engagement and NFT sales via X (formerly Twitter).</p>
         
         
 
