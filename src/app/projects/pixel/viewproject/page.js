@@ -30,7 +30,7 @@ export default function ViewProject() {
         
         
 
-<Link href="https://foundation.app/@Pixel-Farmer" className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10">
+<Link href="https://pixelfarmer.vercel.app/" className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10">
   <span>View Live</span>
   <PixelArrow className="w-7 h-7" />
 </Link>
