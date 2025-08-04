@@ -23,7 +23,7 @@ export default function ViewProject() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
-        className="max-w-2xl text-slate-300 text-lg font-thin leading-relaxed"
+        className="max-w-2xl text-slate-800 text-lg font-thin leading-relaxed"
       >
         <b>AI Music Creation | Machinima Filming | Video Editing | Motion Design</b>
         <p>Meet AVA — a virtual artist. Through machinima built in Second Life, AVA crafts cinematic journeys using original lyrics, AI-generated music and vocals, 

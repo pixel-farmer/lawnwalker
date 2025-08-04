@@ -16,20 +16,20 @@ export default function ProjectNav() {
   return (
     <main className="min-h-screen flex flex-col items-center bg-opacity-0 px-6">
       <section id="projects" className="max-w-xl w-full px-4 mr-40">
-        <h2 className="text-xl md:text-xl mb-4 mt-8 text-left text-white font-thin">
+        <h2 className="text-xl md:text-xl mb-4 mt-8 text-left text-gray-600 font-thin">
           SELECTED WORK
         </h2>
         <ul className="space-y-2">
           {[ 
-            { title: 'I am AVA', href: '/projects/ava' },
-            { title: 'Pixel Farmer', href: '/projects/pixel' },
-            { title: 'Chrono Shatter', href: '/projects/chrono' },
+            { title: 'I am AVA', href: '/projects/ava/viewproject' },
+            { title: 'Pixel Farmer', href: '/projects/pixel/viewproject' },
+            { title: 'Chrono Shatter', href: '/projects/chrono/viewproject' },
           ].map((project, index) => (
             <li key={index} className="group text-left">
               <Link
                 href={project.href}
                 onMouseEnter={() => playHover()}
-                className="text-xl md:text-3xl font-thin text-cyan-500 hover:text-cyan-300 transition duration-300 inline-block transform hover:transform hover:translate-x-2"
+                className="text-xl md:text-3xl font-thin text-gray-600 hover:text-gray-800 transition duration-300 inline-block transform hover:transform hover:translate-x-2"
               >
                 {project.title}
               </Link>

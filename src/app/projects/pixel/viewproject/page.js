@@ -23,7 +23,7 @@ export default function ViewProject() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
-        className="max-w-2xl text-slate-300 text-lg font-thin leading-relaxed"
+        className="max-w-2xl text-slate-800 text-lg font-thin leading-relaxed"
       >
         <b>Voxel 3D Modeling | Animation | Web Design | NFTs</b>
         <p>Pixel Farmer began as a satirical spin on hustle culture and internet microbrands, but evolved into a full creative sandbox—blending voxel art, web design, and narrative experimentation. Each 1/1 digital sculpture was modeled in MagicaVoxel, animated in Blender, and minted on Foundation. The latest iteration of Pixel Farmer lives at pixelfarmer.vercel.app, where Cubie People tend to a mysterious cube empire and commerce gets reimagined as conceptual art. I handled all design, development, animation, and marketing—including community engagement and NFT sales via X (formerly Twitter).</p>

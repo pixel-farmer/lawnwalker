@@ -1,50 +1,32 @@
 'use client'
 
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Suspense, useRef, useState } from 'react'
-import * as THREE from 'three'
-import Bubble from './components/Bubble'
+import { Canvas } from '@react-three/fiber'
+import { Suspense, useState } from 'react'
+import Rabbit from './components/Rabbit'
 import { useSoundPreference } from './context/SoundContext'
 import MusicPlayer from './components/MusicPlayer'
 
-function MouseTracker({ mouse }) {
-  const { camera } = useThree()
-  const raycaster = new THREE.Raycaster()
-  const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0)
-  const point = new THREE.Vector3()
-
-  useFrame(({ mouse: ndc }) => {
-    if (!mouse?.current || !camera) return
-    raycaster.setFromCamera(ndc, camera)
-    raycaster.ray.intersectPlane(plane, point)
-    mouse.current.copy(point)
-  })
-
-  return null
-}
-
-function Bubbles({ mouse }) {
-  const bubbleData = [
-    { pos: [-1.2, 0.4, 0], scale: 0.4 },
-    { pos: [0.7, 1.1, 0], scale: 0.35 },
-    { pos: [1.3, -0.4, 0], scale: 0.3 },
-    { pos: [-0.8, 1.3, 0], scale: 0.25 },
-    { pos: [0, 0, 0], scale: 0.5 },
+function Rabbits() {
+  const rabbitData = [
+    { pos: [-1.2, 0.4, 0], scale: 0.85 },
+    { pos: [0.7, 1.1, 0], scale: 0.756 },
+    { pos: [1.3, -0.4, 0], scale: 0.663 },
+    { pos: [-0.8, 1.3, 0], scale: 0.569 },
+    { pos: [0, 0, 0], scale: 1.138 },
   ]
 
   return (
     <>
-      {bubbleData.map((b, i) => (
-        <Bubble key={i} position={b.pos} scale={b.scale} mouse={mouse} />
+      {rabbitData.map((r, i) => (
+        <Rabbit key={i} position={r.pos} scale={r.scale} />
       ))}
     </>
   )
 }
 
 export default function LandingPage() {
-  const { initializeAudio, enableSound, isAudioInitialized } = useSoundPreference()
+  const { initializeAudio, enableSound, isAudioInitialized, soundEnabled } = useSoundPreference()
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const mouse3D = useRef(new THREE.Vector3())
 
   const handleClick = async () => {
     if (!isAudioInitialized) {
@@ -54,20 +36,24 @@ export default function LandingPage() {
   }
 
   return (
-    <main
-      className="flex items-center justify-center min-h-screen relative"
-      onClick={handleClick}
+    <div 
+      className="w-screen h-screen relative"
       onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
+      onClick={handleClick}
     >
-      <Canvas camera={{ position: [0, 0, 5], fov: 50 }} style={{ width: 500, height: 500, position: 'relative' }}>
+      <Canvas 
+        camera={{ position: [4, 3, 6], fov: 45 }} 
+        className="w-full h-full"
+        style={{ position: 'absolute', top: 0, left: 0 }}
+      >
         <ambientLight intensity={0.6} />
         <directionalLight position={[3, 3, 3]} />
         <Suspense fallback={null}>
-          <MouseTracker mouse={mouse3D} />
-          <Bubbles mouse={mouse3D} />
+          <Rabbits />
         </Suspense>
       </Canvas>
 
+      {/* Sound indicator - shows until audio is initialized */}
       {!isAudioInitialized && (
         <div
           style={{
@@ -75,15 +61,20 @@ export default function LandingPage() {
             top: mousePos.y + 12,
             left: mousePos.x + 20,
             pointerEvents: 'none',
-            color: 'gray',
+            color: '#1f2937',
             fontSize: '0.75rem',
             fontFamily: 'monospace',
+            zIndex: 1000,
+            textShadow: '0 0 4px rgba(255, 255, 255, 0.8)',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            padding: '4px 8px',
+            borderRadius: '4px',
           }}
         >
           Click to enable sound
         </div>
       )}
       <MusicPlayer />
-    </main>
+    </div>
   )
 }

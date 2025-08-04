@@ -17,12 +17,13 @@ export default function RootLayout({ children }) {
   const pathname = usePathname()
   const noBackgroundPaths = ['/projects/cube']
   const hideBackground = noBackgroundPaths.some(path => pathname.startsWith(path))
+  const isHomePage = pathname === '/'
 
   return (
     <html lang="en">
       <body
-        style={{ backgroundColor: '#012138', position: 'relative' }}
-        className={`${inter.className} antialiased text-white`}
+        style={{ backgroundColor: '#ffffff', position: 'relative' }}
+        className={`${inter.className} antialiased text-gray-600`}
       >
         <SoundProvider>
           {/* Always show MusicPlayer in bottom corner */}
@@ -30,39 +31,40 @@ export default function RootLayout({ children }) {
             <MusicPlayer />
           </div>
 
-          {/* Background image unless hidden on specific paths */}
-          {!hideBackground && (
-            <Image
-              className="fixed inset-0 -z-10 object-cover"
-              src="/city-bg.jpg"
-              alt="Background"
-              fill
-              // className="fixed top-0 left-0 w-screen h-screen -z-10 object-cover"
-              priority={pathname === '/home'}
-              quality={75}
-
-            />
-          )}
-
-          <div className="flex min-h-screen relative z-0 ">
-            <SidebarNav />
-            <main className="ml-32 md:ml-48 flex-grow">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={pathname}
-                  initial={{ x: 100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                >
-                  {children}
-                </motion.div>
-              </AnimatePresence>
-            </main>
-            <div className="shrink-0">
-              <ProjectNav />
+          {isHomePage ? (
+            // Full screen for homepage with navigation overlay
+            <div className="w-screen h-screen relative">
+              {children}
+              {/* Navigation overlay for homepage */}
+              <div className="absolute top-0 left-0 z-40">
+                <SidebarNav />
+              </div>
+              <div className="absolute top-0 right-0 z-40">
+                <ProjectNav />
+              </div>
             </div>
-          </div>
+          ) : (
+            // Normal layout for other pages
+            <div className="flex min-h-screen relative z-0 ">
+              <SidebarNav />
+              <main className="ml-32 md:ml-48 flex-grow">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={pathname}
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -100, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  >
+                    {children}
+                  </motion.div>
+                </AnimatePresence>
+              </main>
+              <div className="shrink-0">
+                <ProjectNav />
+              </div>
+            </div>
+          )}
         </SoundProvider>
       </body>
     </html>
