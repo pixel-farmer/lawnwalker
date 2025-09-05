@@ -7,13 +7,13 @@ import { motion } from 'framer-motion'
 
 export default function ViewProject() {
   return (
-    <main className="min-h-screen flex flex-col items-start text-white px-8 md:px-2 pt-2 space-y-12">
+    <main className="min-h-screen flex flex-col items-start text-gray-600 px-8 md:px-2 pt-2 space-y-12">
       {/* Title */}
       <motion.h1
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="text-5xl text-slate-800 md:text-6xl font-light tracking-tight"
+        className="text-5xl text-gray-600 md:text-6xl font-light tracking-tight"
       >
         Chrono Shatter
       </motion.h1>
@@ -23,7 +23,7 @@ export default function ViewProject() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
-        className="max-w-2xl text-slate-800 text-lg font-thin leading-relaxed"
+        className="max-w-2xl text-gray-600 text-lg font-thin leading-relaxed"
       >
         <b>AI Images | Graphic Design | Video Editing | Motion Design</b>
         <p>Chrono Shatter is my YouTube channel dedicated to the weirder side of history—think forgotten fads, eerie legends, bizarre inventions, and characters too strange for textbooks. With a blend of wit, curiosity, and a touch of the macabre, I explore the oddest corners of the past to inform and entertain anyone with a taste for the unusual.</p>
