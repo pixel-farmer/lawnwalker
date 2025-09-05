@@ -13,7 +13,7 @@ export default function ViewProject() {
   const artPieces = [
     {
       id: 1,
-      title: "Art Girl Bunny",
+      title: "Girl with Bunny",
       year: "2025",
       medium: "Oil on Wood",
       dimensions: "12x16 inches",
