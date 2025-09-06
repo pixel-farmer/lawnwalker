@@ -42,7 +42,7 @@ export default function ViewProject() {
         className="max-w-2xl text-gray-600 text-lg font-thin leading-relaxed"
       >
         <b>Fine Art | Oil Paintings</b>
-        <p>A collection of my original artwork. These pieces represent my journey as an artist outside of commercial work, blending American folk art with mondern Lowbrow styles.</p>
+        <p>A collection of my original artwork. These pieces represent my journey as an artist outside of commercial work, blending American folk art with modern Lowbrow styles.</p>
       </motion.div>
 
       {/* Gallery */}

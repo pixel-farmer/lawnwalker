@@ -26,7 +26,7 @@ export default function AboutPage() {
           <p className="font-thin text-gray-600 text-xl leading-relaxed mb-6">
             USA-Based visual designer and creative developer with a focus on digital art, video and motion design, and creative development.
             <br /><br />
-            Always looking for interesting opportunities to create beautiful digital experiences.
+            Also, fine artist working on a new series of paintings.
           </p>
 
           <h2 className="text-gray-600 text-xl mb-2">Contact Lawn</h2>
