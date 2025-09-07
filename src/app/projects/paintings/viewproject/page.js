@@ -26,7 +26,7 @@ export default function ViewProject() {
       year: "2025",
       medium: "Oil on Wood",
       dimensions: "12x12 inches",
-      image: "/textures/art-boy-bunny01.jpg",
+      image: "/textures/art-boy-bunny01.JPG",
       description: "A contemporary digital artwork exploring themes of identity and whimsy."
     }
   ]
