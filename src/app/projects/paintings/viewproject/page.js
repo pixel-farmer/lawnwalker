@@ -19,6 +19,15 @@ export default function ViewProject() {
       dimensions: "12x16 inches",
       image: "/textures/art-girl-bunny01.jpg",
       description: "A contemporary digital artwork exploring themes of identity and whimsy."
+    },
+    {
+      id: 2,
+      title: "Boy with Bunny",
+      year: "2025",
+      medium: "Oil on Wood",
+      dimensions: "12x12 inches",
+      image: "/textures/art-boy-bunny01.jpg",
+      description: "A contemporary digital artwork exploring themes of identity and whimsy."
     }
   ]
 
