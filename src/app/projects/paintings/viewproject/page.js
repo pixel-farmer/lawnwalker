@@ -52,6 +52,12 @@ export default function ViewProject() {
       >
         <b>Fine Art | Oil Paintings</b>
         <p>A collection of my original artwork. These pieces represent my journey as an artist outside of commercial work, blending American folk art with modern Lowbrow styles.</p>
+      
+        <Link href="https://lawnwalker.etsy.com" className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10">
+          <span>View Shop</span>
+          <PixelArrow className="w-7 h-7" />
+        </Link>
+      
       </motion.div>
 
       {/* Gallery */}
