@@ -28,6 +28,15 @@ export default function ViewProject() {
       dimensions: "12x12 inches",
       image: "/textures/art-boy-bunny01.JPG",
       description: "A contemporary digital artwork exploring themes of identity and whimsy."
+    },
+    {
+      id: 3,
+      title: "Standing in a Wheat Field",
+      year: "2025",
+      medium: "Oil on Matte",
+      dimensions: "5x7 inches",
+      image: "/textures/standing-wheat.JPG",
+      description: "A contemporary digital artwork exploring themes of nature and rural life."
     }
   ]
 

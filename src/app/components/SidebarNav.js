@@ -26,6 +26,7 @@ export default function SidebarNav() {
         </Link>
         <div className="pt-8 text-sm">[Visual Designer]</div>
         <div className="pt-2 text-sm">[Creative Developer]</div>
+        <div className="pt-2 text-sm">[Fine Artist]</div>
       </div>
 
       {/* Always-visible nav links */}
