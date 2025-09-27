@@ -61,7 +61,7 @@ export default function ViewProject() {
       title: "Crow",
       year: "2025",
       medium: "Oil on Wood",
-      dimensions: "12x16 inches",
+      dimensions: "5x7 inches",
       image: "/textures/crow.jpg",
       description: "A contemporary digital artwork exploring themes of nature and wildlife."
     }
