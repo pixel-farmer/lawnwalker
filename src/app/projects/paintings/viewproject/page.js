@@ -37,6 +37,33 @@ export default function ViewProject() {
       dimensions: "5x7 inches",
       image: "/textures/standing-wheat.JPG",
       description: "A contemporary digital artwork exploring themes of nature and rural life."
+    },
+    {
+      id: 4,
+      title: "Cornfield",
+      year: "2025",
+      medium: "Oil on Wood",
+      dimensions: "12x16 inches",
+      image: "/textures/cornfield.jpg",
+      description: "A contemporary digital artwork exploring themes of agriculture and rural landscapes."
+    },
+    {
+      id: 5,
+      title: "Standing Boy with Bunny",
+      year: "2025",
+      medium: "Oil on Wood",
+      dimensions: "12x16 inches",
+      image: "/textures/StandingBoyBunny.jpg",
+      description: "A contemporary digital artwork exploring themes of identity and whimsy."
+    },
+    {
+      id: 6,
+      title: "Crow",
+      year: "2025",
+      medium: "Oil on Wood",
+      dimensions: "12x16 inches",
+      image: "/textures/crow.jpg",
+      description: "A contemporary digital artwork exploring themes of nature and wildlife."
     }
   ]
 
