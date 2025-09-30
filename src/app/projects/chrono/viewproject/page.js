@@ -15,7 +15,7 @@ export default function ViewProject() {
         transition={{ duration: 0.7, ease: 'easeOut' }}
         className="text-5xl text-gray-600 md:text-6xl font-light tracking-tight"
       >
-        Chrono Shatter
+        Graphic Design
       </motion.h1>
 
       {/* Description */}
@@ -25,14 +25,11 @@ export default function ViewProject() {
         transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
         className="max-w-2xl text-gray-600 text-lg font-thin leading-relaxed"
       >
-        <b>AI Images | Graphic Design | Video Editing | Motion Design</b>
-        <p>Chrono Shatter is my YouTube channel dedicated to the weirder side of history—think forgotten fads, eerie legends, bizarre inventions, and characters too strange for textbooks. With a blend of wit, curiosity, and a touch of the macabre, I explore the oddest corners of the past to inform and entertain anyone with a taste for the unusual.</p>
+        <b>Brand Identity | Print Design | Logo Design</b>
+        <p>A collection of my graphic design work spanning various mediums and styles. From brand identities and logo design to print materials and digital graphics, these projects showcase my approach to visual communication and creative problem-solving.</p>
         
 
-<Link href="https://www.youtube.com/@lawnwalker" className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10">
-  <span>View Live</span>
-  <PixelArrow className="w-7 h-7" />
-</Link>
+
 
       </motion.div>
 
@@ -44,8 +41,8 @@ export default function ViewProject() {
         className="w-full"
       >
         <Image
-          src="/chrono-channel.jpg"
-          alt="Chrono Shatter Videos"
+          src="/textures/logos.jpg"
+          alt="Graphic Design Portfolio"
           width={879}
           height={628}
           className="h-auto object-contain rounded-lg shadow-lg"

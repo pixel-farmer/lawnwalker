@@ -18,7 +18,7 @@ export default function ChronoLanding() {
         style={{ width: 700, height: 700, background: 'transparent' }} gl={{ alpha: true }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[2, 2, 5]} />
-        <BubbleDistortion imageSrc="/textures/chrono-thumb.png"/>
+        <BubbleDistortion imageSrc="/textures/graphic-design-thumb.png"/>
       </Canvas>
       </button>
     </Link>
