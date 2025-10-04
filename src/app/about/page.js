@@ -24,7 +24,9 @@ export default function AboutPage() {
         <div className="w-1/2">
           <h1 className="text-gray-600 text-2xl mb-4">About Me</h1>
           <p className="font-thin text-gray-600 text-xl leading-relaxed mb-6">
-            USA-Based visual designer and creative developer with a focus on digital art, video and motion design, and creative development.
+            USA-Based visual designer and creative developer with a focus on digital art, video and motion design, and creative 
+            development. Background in corporate and smaller design studios. I've enjoyed working on projects for companies like 
+            PricewaterhouseCoopers, Foxsearchlight Pictures, Novartis Healthcare to name a few. 
             <br /><br />
             Also, fine artist working on a new series of paintings.
           </p>
