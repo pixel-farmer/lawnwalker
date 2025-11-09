@@ -16,7 +16,7 @@ export default function AboutPage() {
         {/* Image */}
         <div className="shrink-0 w-full md:w-80 h-80 md:h-96 relative">
           <Image
-            src="/textures/profile/pfp.png"
+            src="/textures/profile/me-june2024.jpg"
             alt="Lawn Walker"
             fill
             className="object-cover"

@@ -1,7 +1,7 @@
 'use client'
 
 import './globals.css'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
@@ -12,6 +12,7 @@ export default function RootLayout({ children }) {
   const pathname = usePathname()
   const isHomePage = pathname === '/'
   const isAboutPage = pathname === '/about'
+  const isPaintingsPage = pathname === '/projects/paintings/viewproject' || pathname.startsWith('/projects/paintings')
 
   return (
     <html lang="en" style={{ backgroundColor: '#ffffff' }} className="bg-white">
@@ -26,7 +27,6 @@ export default function RootLayout({ children }) {
               <Link href="/" className="text-lg md:text-xl font-light tracking-wide text-gray-900 hover:text-gray-600 transition-colors">
                 Lawn Walker
               </Link>
-              
               <div className="flex items-center gap-8 md:gap-12">
                 <Link 
                   href="/" 
@@ -34,7 +34,15 @@ export default function RootLayout({ children }) {
                     isHomePage ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  Paintings
+                  Home
+                </Link>
+                <Link 
+                  href="/projects/paintings/viewproject" 
+                  className={`text-sm md:text-base font-light tracking-wide transition-colors ${
+                    isPaintingsPage ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  Gallery
                 </Link>
                 <Link 
                   href="/about" 
@@ -42,7 +50,7 @@ export default function RootLayout({ children }) {
                     isAboutPage ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  About
+                  Biography
                 </Link>
               </div>
             </div>
@@ -51,19 +59,16 @@ export default function RootLayout({ children }) {
 
         {/* Main Content */}
         <div className="pt-16 md:pt-20 bg-white min-h-screen" style={{ backgroundColor: '#ffffff' }}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={pathname}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white"
-              style={{ backgroundColor: '#ffffff' }}
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
+          <motion.div
+            key={pathname}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
+            className="bg-white"
+            style={{ backgroundColor: '#ffffff' }}
+          >
+            {children}
+          </motion.div>
         </div>
       </body>
     </html>

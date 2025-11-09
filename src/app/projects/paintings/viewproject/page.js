@@ -76,7 +76,7 @@ export default function ViewProject() {
         transition={{ duration: 0.7, ease: 'easeOut' }}
         className="text-5xl text-gray-600 md:text-6xl font-light tracking-tight"
       >
-        Paintings
+        Gallery
       </motion.h1>
 
       {/* Description */}
@@ -86,13 +86,10 @@ export default function ViewProject() {
         transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
         className="max-w-2xl text-gray-600 text-lg font-thin leading-relaxed"
       >
-        <b>Fine Art | Oil Paintings</b>
-        <p>A collection of my original artwork. These pieces represent my journey as an artist outside of commercial work, blending American folk art with modern Lowbrow styles.</p>
+        <b>Fine Art | Paintings</b>
+        <p>A collection of my original artwork. My style captures a blend of American gothic folk art with modern pop surrealism influences.</p>
       
-        <Link href="https://lawnwalker.etsy.com" className="flex items-center gap-1 text-cyan-500 hover:text-cyan-300 z-10">
-          <span>View Shop</span>
-          <PixelArrow className="w-7 h-7" />
-        </Link>
+
       
       </motion.div>
 
