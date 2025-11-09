@@ -86,7 +86,7 @@ export default function ViewProject() {
         transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
         className="max-w-2xl text-gray-500 text-lg font-thin leading-relaxed"
       >
-        <p>A collection of my original artwork. My style captures a blend of American gothic folk art with modern pop surrealism influences.</p>
+        <p>A collection of my original paintings, created primarily in oil with select works in acrylic.</p>
       
 
       
