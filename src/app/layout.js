@@ -14,9 +14,10 @@ export default function RootLayout({ children }) {
   const isAboutPage = pathname === '/about'
 
   return (
-    <html lang="en">
+    <html lang="en" style={{ backgroundColor: '#ffffff' }} className="bg-white">
       <body
         className={`${inter.className} antialiased bg-white text-gray-900`}
+        style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}
       >
         {/* Minimalist Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-100">
@@ -49,7 +50,7 @@ export default function RootLayout({ children }) {
         </nav>
 
         {/* Main Content */}
-        <div className="pt-16 md:pt-20">
+        <div className="pt-16 md:pt-20 bg-white min-h-screen" style={{ backgroundColor: '#ffffff' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={pathname}
@@ -57,6 +58,8 @@ export default function RootLayout({ children }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
+              className="bg-white"
+              style={{ backgroundColor: '#ffffff' }}
             >
               {children}
             </motion.div>

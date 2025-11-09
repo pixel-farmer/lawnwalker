@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export default function ThankYouPage() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen max-w-2xl mx-auto px-6 md:px-12 py-20">
+    <main className="flex flex-col items-center justify-center min-h-screen max-w-2xl mx-auto px-6 md:px-12 py-20 bg-white" style={{ backgroundColor: '#ffffff' }}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

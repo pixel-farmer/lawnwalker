@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-20">
+    <main className="min-h-screen max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-20 bg-white" style={{ backgroundColor: '#ffffff' }}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

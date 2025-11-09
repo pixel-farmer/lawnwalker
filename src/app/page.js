@@ -73,9 +73,9 @@ export default function HomePage() {
 
   return (
     <>
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-white" style={{ backgroundColor: '#ffffff' }}>
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 p-6 md:p-12 pt-24 md:pt-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 p-6 md:p-12 pt-24 md:pt-32 bg-white" style={{ backgroundColor: '#ffffff' }}>
           {artPieces.map((piece, index) => (
             <motion.div
               key={piece.id}
