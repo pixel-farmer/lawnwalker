@@ -13,7 +13,7 @@ export default function ViewProject() {
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="text-5xl text-gray-600 md:text-6xl font-light tracking-tight"
+        className="text-5xl text-gray-600 md:text-6xl font-light tracking-tight font-headline"
       >
         Graphic Design
       </motion.h1>

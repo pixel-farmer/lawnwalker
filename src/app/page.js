@@ -130,7 +130,7 @@ export default function HomePage() {
           transition={{ duration: 0.4, delay: 0.2 }}
           className="mt-8 text-center space-y-2"
         >
-          <h2 className="text-xl md:text-2xl font-light text-gray-900 tracking-wide">
+          <h2 className="text-xl md:text-2xl font-light text-gray-900 tracking-wide font-headline">
             {currentPiece.title}
           </h2>
           <p className="text-sm md:text-base text-gray-600 font-light">

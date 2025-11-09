@@ -13,36 +13,51 @@ export default function AboutPage() {
         transition={{ duration: 0.6 }}
         className="flex flex-col md:flex-row gap-12 md:gap-16"
       >
-        {/* Image */}
-        <div className="shrink-0 w-full md:w-80 h-80 md:h-96 relative">
-          <Image
-            src="/textures/profile/me-june2024.jpg"
-            alt="Lawn Walker"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
 
         {/* Content */}
         <div className="flex-1 space-y-8">
           <div>
-            <h1 className="text-3xl md:text-4xl font-light text-gray-900 mb-6 tracking-tight">
-              About
+            <h1 className="text-xl md:text-xl font-bold text-gray-500 mb-6 tracking-tight font-headline">
+              Biography
             </h1>
-            <div className="space-y-4 text-gray-700 font-light leading-relaxed text-base md:text-lg">
+            <div className="space-y-4 text-gray-500 font-light leading-relaxed text-base md:text-lg">
               <p>
-                USA-based fine artist working on a new series of oil paintings. My work blends American folk art traditions with modern Lowbrow aesthetics, exploring themes of identity, nature, and rural life.
-              </p>
+              Lawn Walker creates paintings that inhabit the delicate space between innocence and unease. Her figures—often children paired with symbolic animals—stand with a calm, almost solemn presence, as if caught in the middle of a story the viewer has just stepped into. Through muted palettes, subtle textures, and an economy of gesture, Walker draws out the quiet emotional undercurrents that linger beneath memory, identity, and the inner life.</p>
               <p>
-                Outside of my fine art practice, I work as a visual designer and creative developer, with experience in digital art, video and motion design, and creative development. I&apos;ve worked on projects for companies like PricewaterhouseCoopers, Fox Searchlight Pictures, and Novartis Healthcare.
-              </p>
+              Influenced by folk imagery, early portraiture, and psychological narrative, her work blends the familiar with the uncanny. Each character appears both vulnerable and self-possessed, inviting the viewer into a world where tenderness and mystery coexist. The animals they hold—rabbits, crows, and other companions—act as emotional echoes or symbolic guides, deepening the painting’s sense of story and atmosphere.</p>
+              <p>Walker’s process is grounded in layered surfaces and a restrained, intentional mark-making that gives each piece a worn, timeless quality. Rather than relying on spectacle, she builds resonance through subtlety: the tilt of a head, the stillness of a gaze, the quiet tension between subject and setting.</p>
             </div>
+          </div>
+
+          <div>
+          <h1 className="text-xl md:text-xl font-bold text-gray-500 mb-6 tracking-tight font-headline">
+              Exhibitions
+            </h1>
+            <div className="space-y-4 text-gray-500 font-light leading-relaxed text-base md:text-lg">
+          <p>February 2013 – Linus Gallery, Pasadena, CA (Gallery Group Show)</p>
+          <p>November 2012 – Linus Gallery, Pasadena, CA (Online Group Show)</p>
+          <p>August 2012 – Delaware Division of Arts, Mezzanine Gallery, Wilmington, DE (Solo show)</p>
+          <p>February 2011 – The Dirty Show 12, Detroit, MI (Group show)</p>
+          <p>September 2010 – Studio 807, Wilmington, DE (Solo show)</p>
+          <p>July 2 – October 24, 2010 – Biggs Museum, Dover, DE (Award Winners X and Reunion show of the Delaware Division of the Arts (DDOA) fellowship winners)</p>
+          <p>May 2010 – Red Mohawk, Wilmington, DE (Group show)</p>
+          <p>December 2009 – 205 Lavinia Street, Milton, DE (Group show)</p>
+          <p>October 2009 – Amandeline Gallery, Rehoboth, DE (Group show)</p>
+          <p>April 2009 – AB&amp;C Advertising Agency, Wilmington, DE (Group show)</p>
+          <p>March 2007 – Fish On!, Lewes, DE (Solo show)</p>
+          <p>March 2007 – Amandeline Gallery, Rehoboth, DE (Group show)</p>
+          <p>November 2006 – Delaware Division of Arts, Mezzanine Gallery, Wilmington, DE (Solo show)</p>
+          <p>June 2006 – Biggs Museum, Dover, DE (group show of the Delaware Division of the Arts (DDOA) fellowship winners)</p>
+          <p>March 2006 – DCOR, Rehoboth Beach, DE (Solo show)</p>
+          <p>December 2005 – February 2006 – AIPH,  Philadelphia, PA (Group show)</p>
+          <p>October 2005 - 205 Lavinia Street, Milton, DE (Solo show)</p>
+          <p>March 2005 - 205 Lavinia Street, Milton, DE (Solo show)</p>
+          </div>
           </div>
 
           {/* Contact Section */}
           <div className="pt-8 border-t border-gray-200">
-            <h2 className="text-xl font-light text-gray-900 mb-6">Contact</h2>
+            <h2 className="text-xl font-bold text-gray-500 mb-6 font-headline">Contact</h2>
             <form
               action="https://formsubmit.co/cassie@pixel-farmers.com"
               method="POST"

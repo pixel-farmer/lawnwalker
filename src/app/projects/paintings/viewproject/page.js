@@ -74,9 +74,9 @@ export default function ViewProject() {
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="text-5xl text-gray-600 md:text-6xl font-light tracking-tight"
+        className="text-xl md:text-xl font-bold text-gray-500 mb-6 tracking-tight font-headline"
       >
-        Gallery
+        Paintings
       </motion.h1>
 
       {/* Description */}
@@ -84,9 +84,8 @@ export default function ViewProject() {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
-        className="max-w-2xl text-gray-600 text-lg font-thin leading-relaxed"
+        className="max-w-2xl text-gray-500 text-lg font-thin leading-relaxed"
       >
-        <b>Fine Art | Paintings</b>
         <p>A collection of my original artwork. My style captures a blend of American gothic folk art with modern pop surrealism influences.</p>
       
 
@@ -119,7 +118,7 @@ export default function ViewProject() {
               </div>
               
               <div className="space-y-2">
-                <h3 className="text-xl font-medium text-gray-600">{piece.title}</h3>
+                <h3 className="text-xl font-medium text-gray-600 font-headline">{piece.title}</h3>
                 <p className="text-sm text-gray-500">{piece.year}</p>
                 <p className="text-sm text-gray-500">{piece.medium}</p>
                 <p className="text-sm text-gray-500">{piece.dimensions}</p>

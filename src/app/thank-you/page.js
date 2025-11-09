@@ -12,7 +12,7 @@ export default function ThankYouPage() {
         transition={{ duration: 0.6 }}
         className="text-center"
       >
-        <h1 className="text-3xl md:text-4xl font-light text-gray-900 mb-6 tracking-tight">
+        <h1 className="text-3xl md:text-4xl font-light text-gray-900 mb-6 tracking-tight font-headline">
           Thank You
         </h1>
         <p className="text-lg text-gray-700 font-light leading-relaxed mb-8">
