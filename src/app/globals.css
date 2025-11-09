@@ -2,87 +2,49 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #4b5563; /* gray-600 */
+  --foreground: #111827;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #4b5563; /* gray-600 */
-  }
-}
-
-/* html,
-body,
-#root
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-} */
-
-/* Optional: Custom scrollbar styling if you want to show a visual indicator */
-.scroll-indicator {
-  position: fixed;
-  right: 10px;
-  top: 20%;
-  width: 4px;
-  height: 60%;
-  background: rgba(75, 85, 99, 0.1);
-  border-radius: 2px;
-  z-index: 1000;
-}
-
-.scroll-indicator::after {
-  content: '';
-  position: absolute;
-  top: var(--scroll-progress, 0%);
-  width: 100%;
-  height: 20px;
-  background: rgba(75, 85, 99, 0.5);
-  border-radius: 2px;
-  transition: top 0.1s ease;
 }
 
 html, body {
   height: 100%;
   margin: 0;
-  overflow-y: scroll;     
   overflow-x: hidden;
   position: relative;
-  scrollbar-width: none; 
-} 
- 
-
-body {
-  margin: 0;
-  height: 100%;
-  scrollbar-width: none;       
-  -ms-overflow-style: none;   
-}
-
-body::-webkit-scrollbar {
-  display: none;               /* Chrome/Safari */
 }
 
 body {
   background: var(--background);
-  background-image: url('/floral-background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   color: var(--foreground);
-  font-family: Helvetica, sans-serif, monospace, Arial, ;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar - minimal and clean */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f9fafb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d1d5db;
 }
 
