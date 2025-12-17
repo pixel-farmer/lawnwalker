@@ -13,6 +13,7 @@ export default function RootLayout({ children }) {
   const isHomePage = pathname === '/'
   const isAboutPage = pathname === '/about'
   const isPaintingsPage = pathname === '/projects/paintings/viewproject' || pathname.startsWith('/projects/paintings')
+  const isCrucibleHousePage = pathname === '/crucible-house' || pathname.startsWith('/crucible-house')
 
   return (
     <html lang="en" style={{ backgroundColor: '#ffffff' }} className="bg-white">
@@ -51,6 +52,14 @@ export default function RootLayout({ children }) {
                   }`}
                 >
                   Biography
+                </Link>
+                <Link 
+                  href="/crucible-house" 
+                  className={`text-sm md:text-base font-light tracking-wide transition-colors font-headline ${
+                    isCrucibleHousePage ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  Crucible House
                 </Link>
               </div>
             </div>
