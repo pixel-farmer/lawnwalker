@@ -18,7 +18,7 @@ export default function ViewProject() {
       medium: "Oil on Wood",
       dimensions: "12x16 inches",
       image: "/textures/art-girl-bunny01.jpg",
-      description: "A contemporary digital artwork exploring themes of identity and whimsy."
+      description: ""
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ export default function ViewProject() {
       medium: "Oil on Wood",
       dimensions: "12x12 inches",
       image: "/textures/art-boy-bunny01.JPG",
-      description: "A contemporary digital artwork exploring themes of identity and whimsy."
+      description: ""
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ export default function ViewProject() {
       medium: "Oil on Matte",
       dimensions: "5x7 inches",
       image: "/textures/standing-wheat.JPG",
-      description: "A contemporary digital artwork exploring themes of nature and rural life."
+      description: ""
     },
     {
       id: 4,
@@ -45,7 +45,7 @@ export default function ViewProject() {
       medium: "Oil on Wood",
       dimensions: "12x16 inches",
       image: "/textures/cornfield.jpg",
-      description: "A contemporary digital artwork exploring themes of agriculture and rural landscapes."
+      description: ""
     },
     {
       id: 5,
@@ -54,7 +54,7 @@ export default function ViewProject() {
       medium: "Oil on Wood",
       dimensions: "12x16 inches",
       image: "/textures/StandingBoyBunny.jpg",
-      description: "A contemporary digital artwork exploring themes of identity and whimsy."
+      description: ""
     },
     {
       id: 6,
@@ -63,7 +63,16 @@ export default function ViewProject() {
       medium: "Oil on Wood",
       dimensions: "5x7 inches",
       image: "/textures/crow.jpg",
-      description: "A contemporary digital artwork exploring themes of nature and wildlife."
+      description: ""
+    },
+    {
+      id: 7,
+      title: "Octo-Man (Commission)",
+      year: "2025",
+      medium: "Arcylic on Wood",
+      dimensions: "11x14 inches",
+      image: "/textures/octo-man1024.jpg",
+      description: ""
     }
   ]
 
