@@ -53,6 +53,14 @@ export default function RootLayout({ children }) {
                 >
                   Biography
                 </Link>
+                <a 
+                  href="https://lawnwalker.bigcartel.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm md:text-base font-light tracking-wide transition-colors font-headline text-gray-600 hover:text-gray-900"
+                >
+                  Shop
+                </a>
                 <Link 
                   href="/crucible-house" 
                   className={`text-sm md:text-base font-light tracking-wide transition-colors font-headline ${
