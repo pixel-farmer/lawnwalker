@@ -73,6 +73,24 @@ export default function ViewProject() {
       dimensions: "11x14 inches",
       image: "/textures/octo-man1024.jpg",
       description: ""
+    },
+    {
+      id: 8,
+      title: "Lotus Eater",
+      year: "2025",
+      medium: "Oil on Wood",
+      dimensions: "6x6 inches",
+      image: "/textures/Lotus-Eater.jpg",
+      description: ""
+    },
+    {
+      id: 9,
+      title: "Blue Ribbons",
+      year: "2025",
+      medium: "Oil on Wood",
+      dimensions: "12x16 inches",
+      image: "/textures/BlueRibbons.jpg",
+      description: ""
     }
   ]
 
