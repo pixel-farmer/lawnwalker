@@ -77,7 +77,7 @@ export default function ViewProject() {
     {
       id: 8,
       title: "Lotus Eater",
-      year: "2025",
+      year: "2026",
       medium: "Oil on Wood",
       dimensions: "6x6 inches",
       image: "/textures/Lotus-Eater.jpg",
@@ -86,7 +86,7 @@ export default function ViewProject() {
     {
       id: 9,
       title: "Blue Ribbons",
-      year: "2025",
+      year: "2026",
       medium: "Oil on Wood",
       dimensions: "12x16 inches",
       image: "/textures/BlueRibbons.jpg",
