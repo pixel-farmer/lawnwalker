@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'], weight: ['200', '300', '400', '500'] })
 
@@ -86,6 +87,19 @@ export default function RootLayout({ children }) {
             {children}
           </motion.div>
         </div>
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FHN93PVPKX"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FHN93PVPKX');
+          `}
+        </Script>
       </body>
     </html>
   )
