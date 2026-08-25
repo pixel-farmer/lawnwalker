@@ -3,98 +3,18 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import {
+  getGalleryProducts,
+  getPrimaryImage,
+} from '@/app/data/products'
+
+const galleryProducts = getGalleryProducts()
 
 export default function ViewProject() {
   const [selectedImage, setSelectedImage] = useState(null)
 
-  // Fine art pieces
-  const artPieces = [
-    {
-      id: 1,
-      title: "Girl with Bunny",
-      year: "2025",
-      medium: "Oil on Wood",
-      dimensions: "12x16 inches",
-      image: "/textures/art-girl-bunny01.jpg",
-      description: ""
-    },
-    {
-      id: 2,
-      title: "Boy with Bunny",
-      year: "2025",
-      medium: "Oil on Wood",
-      dimensions: "12x12 inches",
-      image: "/textures/art-boy-bunny01.JPG",
-      description: ""
-    },
-    {
-      id: 3,
-      title: "Standing in a Wheat Field",
-      year: "2025",
-      medium: "Oil on Matte",
-      dimensions: "5x7 inches",
-      image: "/textures/standing-wheat.JPG",
-      description: ""
-    },
-    {
-      id: 4,
-      title: "Cornfield",
-      year: "2025",
-      medium: "Oil on Wood",
-      dimensions: "12x16 inches",
-      image: "/textures/cornfield.jpg",
-      description: ""
-    },
-    {
-      id: 5,
-      title: "Standing Boy with Bunny",
-      year: "2025",
-      medium: "Oil on Wood",
-      dimensions: "12x16 inches",
-      image: "/textures/StandingBoyBunny.jpg",
-      description: ""
-    },
-    {
-      id: 6,
-      title: "Crow",
-      year: "2025",
-      medium: "Oil on Wood",
-      dimensions: "5x7 inches",
-      image: "/textures/crow.jpg",
-      description: ""
-    },
-    {
-      id: 7,
-      title: "Octo-Man (Commission)",
-      year: "2025",
-      medium: "Arcylic on Wood",
-      dimensions: "11x14 inches",
-      image: "/textures/octo-man1024.jpg",
-      description: ""
-    },
-    {
-      id: 8,
-      title: "Lotus Eater",
-      year: "2026",
-      medium: "Oil on Wood",
-      dimensions: "6x6 inches",
-      image: "/textures/Lotus-Eater.jpg",
-      description: ""
-    },
-    {
-      id: 9,
-      title: "Blue Ribbons",
-      year: "2026",
-      medium: "Oil on Wood",
-      dimensions: "12x16 inches",
-      image: "/textures/BlueRibbons.jpg",
-      description: ""
-    }
-  ]
-
   return (
     <main className="min-h-screen flex flex-col items-start text-gray-600 px-8 md:px-2 pt-2 space-y-12">
-      {/* Title */}
       <motion.h1
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
@@ -104,7 +24,6 @@ export default function ViewProject() {
         Paintings
       </motion.h1>
 
-      {/* Description */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -112,12 +31,8 @@ export default function ViewProject() {
         className="max-w-2xl text-gray-500 text-lg font-thin leading-relaxed"
       >
         <p>A collection of my original paintings, created primarily in oil with select works in acrylic.</p>
-      
-
-      
       </motion.div>
 
-      {/* Gallery */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -125,7 +40,7 @@ export default function ViewProject() {
         className="w-full"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {artPieces.map((piece) => (
+          {galleryProducts.map((piece) => (
             <div 
               key={piece.id} 
               className="group cursor-pointer"
@@ -133,7 +48,7 @@ export default function ViewProject() {
             >
               <div className="relative overflow-hidden rounded-lg mb-4">
                 <Image
-                  src={piece.image}
+                  src={getPrimaryImage(piece)}
                   alt={piece.title}
                   width={400}
                   height={500}
@@ -153,7 +68,6 @@ export default function ViewProject() {
         </div>
       </motion.div>
 
-      {/* Modal for enlarged view */}
       {selectedImage && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
@@ -162,7 +76,7 @@ export default function ViewProject() {
           <div className="max-w-4xl max-h-full bg-white rounded-lg overflow-hidden">
             <div className="relative">
               <Image
-                src={selectedImage.image}
+                src={getPrimaryImage(selectedImage)}
                 alt={selectedImage.title}
                 width={800}
                 height={1000}
@@ -177,18 +91,15 @@ export default function ViewProject() {
                 </svg>
               </button>
             </div>
-            
           </div>
         </div>
       )}
 
-      {/* Back link */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.3 }}
-      >
-      </motion.div>
+      />
     </main>
   )
 }

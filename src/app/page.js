@@ -3,97 +3,38 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import {
+  getCarouselImage,
+  getFeaturedProducts,
+} from '@/app/data/products'
 
-// Fine art pieces data
-const artPieces = [
-  {
-    id: 1,
-    title: "Girl with Bunny",
-    year: "2025",
-    medium: "Oil on Wood",
-    dimensions: "12x16 inches",
-    image: "/textures/art-girl-bunny01.jpg",
-    thumbnail: "/textures/art-girl-bunny01-th.jpg",
-    description: "A contemporary artwork exploring themes of identity and whimsy."
-  },
-  {
-    id: 2,
-    title: "Boy with Bunny",
-    year: "2025",
-    medium: "Oil on Wood",
-    dimensions: "12x12 inches",
-    image: "/textures/art-boy-bunny01.JPG",
-    thumbnail: "/textures/art-boy-bunny01-th.JPG",
-    description: "A contemporary artwork exploring themes of identity and whimsy."
-  },
-  {
-    id: 3,
-    title: "Standing in a Wheat Field",
-    year: "2025",
-    medium: "Oil on Matte",
-    dimensions: "5x7 inches",
-    image: "/textures/standing-wheat.JPG",
-    thumbnail: "/textures/standing-wheat-th.JPG",
-    description: "A contemporary artwork exploring themes of nature and rural life."
-  },
-  {
-    id: 4,
-    title: "Cornfield",
-    year: "2025",
-    medium: "Oil on Wood",
-    dimensions: "12x16 inches",
-    image: "/textures/cornfield.jpg",
-    thumbnail: "/textures/cornfield-th.jpg",
-    description: "A contemporary artwork exploring themes of agriculture and rural landscapes."
-  },
-  {
-    id: 5,
-    title: "Standing Boy with Bunny",
-    year: "2025",
-    medium: "Oil on Wood",
-    dimensions: "12x16 inches",
-    image: "/textures/StandingBoyBunny.jpg",
-    thumbnail: "/textures/StandingBoyBunny1024.jpg",
-    description: "A contemporary artwork exploring themes of identity and whimsy."
-  },
-  {
-    id: 6,
-    title: "Crow",
-    year: "2025",
-    medium: "Oil on Wood",
-    dimensions: "5x7 inches",
-    image: "/textures/crow.jpg",
-    thumbnail: "/textures/crow.jpg",
-    description: "A contemporary artwork exploring themes of nature and wildlife."
-  }
-]
+const featuredProducts = getFeaturedProducts()
 
 export default function HomePage() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
-  // Ensure component is mounted before starting animations
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
-  // Auto-advance carousel every 4 seconds
   useEffect(() => {
-    if (!isMounted || isHovered) return // Don't start until mounted, pause on hover
-    
+    if (!isMounted || isHovered) return
+
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % artPieces.length)
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + 1) % featuredProducts.length
+      )
     }, 4000)
 
     return () => clearInterval(interval)
   }, [isMounted, isHovered])
 
-  const currentPiece = artPieces[currentIndex]
+  const currentPiece = featuredProducts[currentIndex]
 
   return (
     <main className="min-h-screen bg-white flex flex-col items-center justify-center" style={{ backgroundColor: '#ffffff' }}>
-      {/* Centered Carousel */}
       <div 
         className="flex flex-col items-center justify-center flex-1 w-full px-4 py-20"
         onMouseEnter={() => setIsHovered(true)}
@@ -110,7 +51,7 @@ export default function HomePage() {
           >
             <div className="relative aspect-[3/4] w-full">
               <Image
-                src={currentPiece.image}
+                src={getCarouselImage(currentPiece)}
                 alt={currentPiece.title}
                 fill
                 className="object-contain"
@@ -121,7 +62,6 @@ export default function HomePage() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Painting Info */}
         <motion.div
           key={`info-${currentPiece.id}`}
           initial={{ opacity: 0, y: 10 }}
@@ -139,7 +79,6 @@ export default function HomePage() {
         </motion.div>
       </div>
 
-      {/* Social Media Icons */}
       <div className="pb-12 flex items-center justify-center gap-6">
         <a
           href="https://www.instagram.com/lawnwalker/"

@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import Script from 'next/script'
+import CartButton from '@/app/components/CartButton'
+import { CartProvider } from '@/app/context/CartContext'
 
 const inter = Inter({ subsets: ['latin'], weight: ['200', '300', '400', '500'] })
 
@@ -14,6 +16,7 @@ export default function RootLayout({ children }) {
   const isHomePage = pathname === '/'
   const isAboutPage = pathname === '/about'
   const isPaintingsPage = pathname === '/projects/paintings/viewproject' || pathname.startsWith('/projects/paintings')
+  const isShopPage = pathname === '/shop' || pathname.startsWith('/shop/')
 
   return (
     <html lang="en" style={{ backgroundColor: '#ffffff' }} className="bg-white">
@@ -21,6 +24,7 @@ export default function RootLayout({ children }) {
         className={`${inter.className} antialiased bg-white text-gray-900`}
         style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}
       >
+        <CartProvider>
         {/* Minimalist Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 md:py-6">
@@ -53,14 +57,15 @@ export default function RootLayout({ children }) {
                 >
                   Biography
                 </Link>
-                <a 
-                  href="https://lawnwalker.bigcartel.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-sm md:text-base font-light tracking-wide transition-colors font-headline text-gray-600 hover:text-gray-900"
+                <Link 
+                  href="/shop" 
+                  className={`text-sm md:text-base font-light tracking-wide transition-colors font-headline ${
+                    isShopPage ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                  }`}
                 >
                   Shop
-                </a>
+                </Link>
+                <CartButton />
                 <a 
                   href="https://www.etsy.com/shop/LawnWalker?ref=seller-platform-mcnav&section_id=55473457" 
                   target="_blank" 
@@ -100,6 +105,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-FHN93PVPKX');
           `}
         </Script>
+        </CartProvider>
       </body>
     </html>
   )
