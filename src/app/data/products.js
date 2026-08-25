@@ -177,23 +177,6 @@ export const products = [
     featured: false,
     stripePriceId: null,
   },
-  {
-    id: 10,
-    slug: 'stripe-test',
-    productType: PRODUCT_TYPE.PRINT,
-    title: 'Stripe Test Product',
-    price: 100,
-    medium: 'Test Product',
-    dimensions: 'N/A',
-    year: '2026',
-    description: 'Temporary product for testing Stripe checkout and order fulfillment.',
-    images: ['/textures/test-product.jpg'],
-    thumbnail: '/textures/test-product.jpg',
-    status: 'available',
-    quantity: null,
-    featured: false,
-    stripePriceId: null,
-  },
 
   /*
    * Future print example (uncomment when ready):
