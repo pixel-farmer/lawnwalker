@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   getCarouselImage,
   getFeaturedProducts,
+  getProductSize,
 } from '@/app/data/products'
 
 const featuredProducts = getFeaturedProducts()
@@ -74,7 +75,7 @@ export default function HomePage() {
             {currentPiece.title}
           </h2>
           <p className="text-sm md:text-base text-gray-600 font-light">
-            {currentPiece.year} • {currentPiece.medium} • {currentPiece.dimensions}
+            {currentPiece.year} • {currentPiece.medium} • {getProductSize(currentPiece)}
           </p>
         </motion.div>
       </div>

@@ -25,7 +25,7 @@ export const products = [
     title: 'Girl with Bunny',
     price: 87500,
     medium: 'Oil on Wood',
-    dimensions: '12x16 inches',
+    size: '12x16 inches',
     year: '2025',
     description:
       'A contemporary artwork exploring themes of identity and whimsy.',
@@ -43,7 +43,7 @@ export const products = [
     title: 'Boy with Bunny',
     price: 75000,
     medium: 'Oil on Wood',
-    dimensions: '12x12 inches',
+    size: '12x12 inches',
     year: '2025',
     description:
       'A contemporary artwork exploring themes of identity and whimsy.',
@@ -61,7 +61,7 @@ export const products = [
     title: 'Standing in a Wheat Field',
     price: 35000,
     medium: 'Oil on Matte',
-    dimensions: '5x7 inches',
+    size: '5x7 inches',
     year: '2025',
     description:
       'A contemporary artwork exploring themes of nature and rural life.',
@@ -79,7 +79,7 @@ export const products = [
     title: 'Cornfield',
     price: 87500,
     medium: 'Oil on Wood',
-    dimensions: '12x16 inches',
+    size: '12x16 inches',
     year: '2025',
     description:
       'A contemporary artwork exploring themes of agriculture and rural landscapes.',
@@ -97,7 +97,7 @@ export const products = [
     title: 'Standing Boy with Bunny',
     price: 87500,
     medium: 'Oil on Wood',
-    dimensions: '12x16 inches',
+    size: '12x16 inches',
     year: '2025',
     description:
       'A contemporary artwork exploring themes of identity and whimsy.',
@@ -115,7 +115,7 @@ export const products = [
     title: 'Crow',
     price: 35000,
     medium: 'Oil on Wood',
-    dimensions: '5x7 inches',
+    size: '5x7 inches',
     year: '2025',
     description:
       'A contemporary artwork exploring themes of nature and wildlife.',
@@ -133,7 +133,7 @@ export const products = [
     title: 'Octo-Man (Commission)',
     price: null,
     medium: 'Acrylic on Wood',
-    dimensions: '11x14 inches',
+    size: '11x14 inches',
     year: '2025',
     description: '',
     images: ['/textures/octo-man1024.jpg'],
@@ -150,7 +150,7 @@ export const products = [
     title: 'Lotus Eater',
     price: 45000,
     medium: 'Oil on Wood',
-    dimensions: '6x6 inches',
+    size: '6x6 inches',
     year: '2026',
     description: '',
     images: ['/textures/Lotus-Eater.jpg'],
@@ -167,7 +167,7 @@ export const products = [
     title: 'Blue Ribbons',
     price: 87500,
     medium: 'Oil on Wood',
-    dimensions: '12x16 inches',
+    size: '12x16 inches',
     year: '2026',
     description: '',
     images: ['/textures/BlueRibbons.jpg'],
@@ -184,7 +184,8 @@ export const products = [
     title: 'Out at Night',
     price: 47500,
     medium: 'Oil on Matte',
-    dimensions: '6x8 inches',
+    size: '6x8 inches',
+    framed: '10-3/4x13 inches',
     year: '2026',
     description: '',
     images: ['/textures/OutAtNight.jpg'],
@@ -204,7 +205,7 @@ export const products = [
    *   title: 'Girl with Bunny — Archival Print',
    *   price: 8500,
    *   medium: 'Archival giclée print',
-   *   dimensions: '8x10 inches',
+   *   size: '8x10 inches',
    *   year: '2025',
    *   description: 'Museum-quality reproduction of the original painting.',
    *   images: ['/textures/art-girl-bunny01.jpg'],
@@ -324,6 +325,14 @@ export function getStatusLabel(product) {
   if (product.status === 'not_for_sale') return 'Not for sale'
   if (isPurchasable(product)) return formatPrice(product.price)
   return 'Unavailable'
+}
+
+export function getProductSize(product) {
+  return product?.size ?? product?.dimensions ?? ''
+}
+
+export function getProductFramed(product) {
+  return product?.framed ?? null
 }
 
 export function getMaxQuantity(product) {

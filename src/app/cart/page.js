@@ -9,6 +9,7 @@ import {
   getMaxQuantity,
   getPrimaryImage,
   getProductTypeLabel,
+  getProductSize,
   isOneOfOne,
 } from '@/app/data/products'
 import { useCart } from '@/app/context/CartContext'
@@ -114,7 +115,7 @@ export default function CartPage() {
                       </Link>
                       <p className="text-sm text-gray-500 font-light mt-1">
                         {getProductTypeLabel(product)} · {product.medium} ·{' '}
-                        {product.dimensions}
+                        {getProductSize(product)}
                       </p>
                       <p className="text-sm text-gray-600 font-light mt-1">
                         {formatPrice(product.price)}

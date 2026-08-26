@@ -8,6 +8,8 @@ import AddToCartButton from '@/app/components/AddToCartButton'
 import {
   formatPrice,
   getPrimaryImage,
+  getProductFramed,
+  getProductSize,
   getProductTypeLabel,
   isPurchasable,
 } from '@/app/data/products'
@@ -113,9 +115,15 @@ export default function ArtworkDetail({ product }) {
                   <dd className="text-gray-600">{product.medium}</dd>
                 </div>
                 <div className="flex gap-3">
-                  <dt className="text-gray-400 w-24 shrink-0">Dimensions</dt>
-                  <dd className="text-gray-600">{product.dimensions}</dd>
+                  <dt className="text-gray-400 w-24 shrink-0">Size</dt>
+                  <dd className="text-gray-600">{getProductSize(product)}</dd>
                 </div>
+                {getProductFramed(product) && (
+                  <div className="flex gap-3">
+                    <dt className="text-gray-400 w-24 shrink-0">Framed</dt>
+                    <dd className="text-gray-600">{getProductFramed(product)}</dd>
+                  </div>
+                )}
                 {product.price != null && (
                   <div className="flex gap-3">
                     <dt className="text-gray-400 w-24 shrink-0">Price</dt>

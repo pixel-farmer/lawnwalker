@@ -6,6 +6,8 @@ import { useState } from 'react'
 import {
   getGalleryProducts,
   getPrimaryImage,
+  getProductFramed,
+  getProductSize,
 } from '@/app/data/products'
 
 const galleryProducts = getGalleryProducts()
@@ -61,7 +63,10 @@ export default function ViewProject() {
                 <h3 className="text-xl font-medium text-gray-600 font-headline">{piece.title}</h3>
                 <p className="text-sm text-gray-500">{piece.year}</p>
                 <p className="text-sm text-gray-500">{piece.medium}</p>
-                <p className="text-sm text-gray-500">{piece.dimensions}</p>
+                <p className="text-sm text-gray-500">{getProductSize(piece)}</p>
+                {getProductFramed(piece) && (
+                  <p className="text-sm text-gray-500">Framed: {getProductFramed(piece)}</p>
+                )}
               </div>
             </div>
           ))}

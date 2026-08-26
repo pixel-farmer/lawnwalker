@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {
   formatPrice,
   getPrimaryImage,
+  getProductSize,
   getProductTypeLabel,
   isPurchasable,
 } from '@/app/data/products'
@@ -46,7 +47,7 @@ export default function ArtworkCard({ product }) {
         <p className="text-sm text-gray-500 font-light">
           {getProductTypeLabel(product)} · {product.medium}
         </p>
-        <p className="text-sm text-gray-500 font-light">{product.dimensions}</p>
+        <p className="text-sm text-gray-500 font-light">{getProductSize(product)}</p>
         <p
           className={`text-sm font-light ${
             available ? 'text-gray-600' : 'text-gray-400 tracking-wide uppercase'

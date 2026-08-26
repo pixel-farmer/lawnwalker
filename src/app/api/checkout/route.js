@@ -2,6 +2,7 @@ import {
   getMaxQuantity,
   getPrimaryImage,
   getProductBySlug,
+  getProductSize,
   getProductTypeLabel,
   isPurchasable,
 } from '@/app/data/products'
@@ -92,7 +93,7 @@ export async function POST(request) {
       const imageUrl = getAbsoluteImageUrl(getPrimaryImage(product), siteUrl)
       const productData = {
         name: product.title,
-        description: `${getProductTypeLabel(product)} · ${product.medium} · ${product.dimensions}`,
+        description: `${getProductTypeLabel(product)} · ${product.medium} · ${getProductSize(product)}`,
       }
 
       if (imageUrl) {
