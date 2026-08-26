@@ -177,7 +177,23 @@ export const products = [
     featured: false,
     stripePriceId: null,
   },
-
+  {
+    id: 10,
+    slug: 'outatnight',
+    productType: PRODUCT_TYPE.ORIGINAL,
+    title: 'Out at Night',
+    price: 47500,
+    medium: 'Oil on Matte',
+    dimensions: '6x8 inches',
+    year: '2026',
+    description: '',
+    images: ['/textures/OutAtNight.jpg'],
+    thumbnail: '/textures/OutAtNight.jpg',
+    status: 'available',
+    quantity: 1,
+    featured: false,
+    stripePriceId: null,
+  },
   /*
    * Future print example (uncomment when ready):
    *
